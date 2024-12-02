@@ -193,6 +193,7 @@ server <- function(input, output) {
       "These graphs show the legacy of residential segregation, one that has led to stark environmental injustice that tremendously ails Black, Latino, and Native American families in Minneapolis. The correlation between unjust housing policies, climate change effects, and marginalized neighborhoods are apparent: the more socially vulnerable they are, the more exposed they are to the effects of climate change---and we can trace this back to residential seggregation practices from the early 20th century.",
       "The racial covenants (1920s) and HOLC Grade (1940s) map drew from data by the University of Minnesota's 'Mapping Prejudice' project.",
       "Datasets on Minneapolis' social vulnerability index, tree canopy, land surface temperature, and pollution are aggregated to census tract level and averaged over the span of 4 years (2016-2020). Their sources are: Centers for Disease Control and Prevention, Google Environmental Insights Explorer, Google Earth Engine, and Minnesota Pollution Control Agency, respectively.",
+      "<i>If there's an error raised when hovering on the maps, try again by hovering on non-water areas.<i>",
       sep = "<br/><br/>"
     ) 
     )
@@ -294,7 +295,6 @@ server <- function(input, output) {
                   fillOpacity = 0.7,
                   color = "black", # Polygon border color
                   weight = 1, # Border thickness)
-                  label = final_spatial$GEOID,
                   layerId = final_spatial$GEOID
       ) %>%
       addPolygons(data = msp_lake,
