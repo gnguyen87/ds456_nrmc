@@ -159,7 +159,7 @@ ui <- navbarPage(
     bg = "#06402B", fg = "white", primary = "#FCC780",
     base_font = font_google("Poppins"),
     code_font = font_google("Poppins")
-  )
+  ),
   title = "Examining The Roots of Environmental Injustice in Minneapolis",
   tabPanel(
     title = "Then versus Now",
