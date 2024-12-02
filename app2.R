@@ -155,13 +155,18 @@ svi <- social_vulnerability %>%
 
 # Define UI for application that draws a histogram
 ui <- navbarPage(
-  theme = bs_theme( bootswatch = "simplex"),
+  theme = bs_theme(
+    bg = "#06402B", fg = "white", primary = "#FCC780",
+    base_font = font_google("Poppins"),
+    code_font = font_google("Poppins")
+  )
   title = "Examining The Roots of Environmental Injustice in Minneapolis",
   tabPanel(
     title = "Then versus Now",
     sidebarLayout(
       sidebarPanel(
-        selectInput("var", label = "Choose an environmental variable", choices = variables)
+        selectInput("var", label = "Choose an environmental variable", choices = variables),
+        htmlOutput("text")
       ),
       mainPanel(
         fluidRow(
@@ -185,9 +190,9 @@ server <- function(input, output) {
   
   output$text <- renderUI({ 
     HTML(paste(
-      "",
-      "From these graphs, I found that the educational attainment is suggested to be much lower in income-deprived towns. Furthermore, this trend performs worse and worse the higher the educational level. More interestingly, UK towns that tend to be of higher deprivation in terms of income tend to be bigger-sized. When examining the correlation between education score, which is based on the key stage 4 (14-16 year-olds) and achieved proportion of town in each key stage, as in those who successfully completed a certain key stage, I found that the higher the achieved town proportion in all key stages, the higher the key stage 4 education score and vice versa. In other words, towns with higher achived proportion in early stages will score higher in the education score in key stage 4, and towns with higher education scores in key stage 4 have higher achieved proportion rate in high-school and university. These findings suggest social and geoeconomic factors such as the relationship between town size and town economic performance as well as early access to and achievement in education are imperative to the town overall educational attainment level.",
-      "Source: The dataset this week comes from The UK Office for National Statistics. It was explored in the July 2023 article 'Why do children and young people in smaller towns do better academically than those in larger towns?'",
+      "These graphs show the legacy of residential segregation, one that has led to stark environmental injustice that tremendously ails Black, Latino, and Native American families in Minneapolis. The correlation between unjust housing policies, climate change effects, and marginalized neighborhoods are apparent: the more socially vulnerable they are, the more exposed they are to the effects of climate change---and we can trace this back to residential seggregation practices from the early 20th century.",
+      "The racial covenants (1920s) and HOLC Grade (1940s) map drew from data by the University of Minnesota's 'Mapping Prejudice' project.",
+      "Datasets on Minneapolis' social vulnerability index, tree canopy, land surface temperature, and pollution are aggregated to census tract level and averaged over the span of 4 years (2016-2020). Their sources are: Centers for Disease Control and Prevention, Google Environmental Insights Explorer, Google Earth Engine, and Minnesota Pollution Control Agency, respectively.",
       sep = "<br/><br/>"
     ) 
     )
@@ -360,20 +365,6 @@ server <- function(input, output) {
   output_temp <- renderPrint({
     input$today_map_mouseover_shape_mouseover$id
   })
-  
-#   observe({
-#   print(names(input))  # Print available inputs to ensure it's there
-# })
-#   
-#   observe({
-#     print(input$today_map_shape_mouseover)  # Inspect what input event provides
-#   })
-
-  # current_val <- reactiveVal(1)
-  # 
-  # observeEvent(input$reset, {
-  #   current_val(NULL)
-  # })
  
   
   output$svi_plot <- renderPlotly({
@@ -389,7 +380,7 @@ server <- function(input, output) {
         filter(FIPS == input$today_map_shape_mouseover$id)
       
       validate(
-        need(nrow(svi) != 0,"Invalid Census Tract. Try hovering on a valid land area." )
+        need(nrow(svi) != 0, "Invalid Census Tract. Try hovering on a valid census area.")
       )
   
     }
