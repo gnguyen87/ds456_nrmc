@@ -128,14 +128,14 @@ final <- tree_canopy_final %>%
   ungroup() %>% 
   distinct() %>% 
   rename(
-    `Tree Canopy`=tree_canopy_area,
+    `Tree Canopy (%)`=tree_canopy_area,
     `Annual PM2.5 (tons)` = air_pollution
   ) %>% 
   filter(GEOID != 27123043002 ) %>% 
   filter(GEOID != 27053980000)
 
 
-variables <- c("Tree Canopy", "Annual PM2.5 (tons)")
+variables <- c("Tree Canopy (%)", "Annual PM2.5 (tons)")
 
 final_spatial <- msp_census_tracts_spatial %>% 
   left_join(final, by = c("GEOID" = "GEOID"))
@@ -170,30 +170,44 @@ ui <- navbarPage(
       ),
       mainPanel(
         fluidRow(
-          column(leafletOutput("cov_redlining_map"), width = 6),
-          column(leafletOutput("today_map"), width = 6)
+          column(leafletOutput("cov_redlining_map"), width = 6, height = 20),
+          column(leafletOutput("today_map"), width = 6, height = 20)
         ),
         fluidRow(
-          plotlyOutput("svi_plot")
+          plotlyOutput("svi_plot"), width = 8, height = 20
         )
       )
     )
   ),
   tabPanel(
-    title = "About",
-    "About this app"
+    title = "Sources",
+    htmlOutput("text1")
   )
 )
 
-# Define server logic required to draw a histogram
+# Define server logic
 server <- function(input, output) {
   
   output$text <- renderUI({ 
     HTML(paste(
-      "These graphs show the legacy of residential segregation, one that has led to stark environmental injustice that tremendously ails Black, Latino, and Native American families in Minneapolis. The correlation between unjust housing policies, climate change effects, and marginalized neighborhoods are apparent: the more socially vulnerable they are, the more exposed they are to the effects of climate change---and we can trace this back to residential seggregation practices from the early 20th century.",
-      "The racial covenants (1920s) and HOLC Grade (1940s) map drew from data by the University of Minnesota's 'Mapping Prejudice' project.",
-      "Datasets on Minneapolis' social vulnerability index, tree canopy, land surface temperature, and pollution are aggregated to census tract level and averaged over the span of 4 years (2016-2020). Their sources are: Centers for Disease Control and Prevention, Google Environmental Insights Explorer, Google Earth Engine, and Minnesota Pollution Control Agency, respectively.",
+      "These graphs show the legacy of residential segregation, one that has led to stark environmental injustice that tremendously ails Black, Latino, and Native American families in Minneapolis. The correlation between historically unjust housing policies and climate change effects against marginalized neighborhoods are apparent: the more socially vulnerable a neighborhood is, the more exposed they are to the effects of climate change---and we can trace this back to residential seggregation practices from the early 20th century.",
+      "Variables: ",
+      "  - Tree canopy percentage is estimated as the percentage of pixels in a city or neighborhood that are categorized as `tree`.",
+      "  - Annual PM2.5 emissions is the aggregated emissions from all air permitted facilities located within each census tract.",
       "<i>If there's an error raised when hovering on the maps, try again by hovering on non-water areas.<i>",
+      sep = "<br/><br/>"
+    ) 
+    )
+  })
+  
+  output$text1 <- renderUI({ 
+    HTML(paste(
+      "Sources: ",
+      "  -  Racial covenants: https://conservancy.umn.edu/items/16b494dc-ef78-4cbf-90b3-40ebe886c13f",
+      "  -  HOLC grade: https://dsl.richmond.edu/panorama/redlining/data",
+      "  -  Social Vulnerability Index: https://www.atsdr.cdc.gov/place-health/php/svi/svi-data-documentation-download.html?CDC_AAref_Val=https://www.atsdr.cdc.gov/placeandhealth/svi/data_documentation_download.html",
+      "  -  PM2.5 Air Emissions: https://data.pca.state.mn.us/views/Airemissions-pointsourcefacilitydata/About?%3Aembed=y&%3AisGuestRedirectFromVizportal=y",
+      "  -  Tree Canopy Area: https://insights.sustainability.google/",
       sep = "<br/><br/>"
     ) 
     )
@@ -384,7 +398,7 @@ server <- function(input, output) {
       )
   
     }
-    
+
     
     plot_ly(
       type = 'scatterpolar',
@@ -392,6 +406,7 @@ server <- function(input, output) {
       theta = svi$var,
       fill = 'toself',
       fillcolor = 'green',
+      
       mode = 'none',
       opacity = .7
     ) %>%
@@ -408,7 +423,8 @@ server <- function(input, output) {
         showlegend = F
       ) %>%
       layout(plot_bgcolor  = "transparent",
-             paper_bgcolor = "transparent")
+             paper_bgcolor = "transparent") %>% 
+    layout(font = list(color = '#FCC780')) 
     
   })
 }
