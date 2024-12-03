@@ -1,0 +1,17 @@
+---
+title: "Untitled"
+format: html
+editor: visual
+---
+
+you need the Minneapolis_City_Cleaned.tif raster file and it is in your slack inbox. msp_sf is the surface temperature data.
+
+```{r}
+msp_tif <- rast("~/Documents/School/Capstone/project files copy/data/Minneapolis_City_Cleaned.tif")
+
+msp_poly <-  as.polygons(msp_tif, dissolve = TRUE)
+
+msp_sf <- st_as_sf(msp_poly)
+
+msp_sf
+```
