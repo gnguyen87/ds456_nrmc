@@ -1,5 +1,6 @@
 ---
 title: "Examining The Roots of Environmental Injustice in Minneapolis"
+author: "Na Nguyen"
 format: 
   html:
     page-layout: full
