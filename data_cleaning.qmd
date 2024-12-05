@@ -1,0 +1,220 @@
+---
+title: "Data Cleaning and Exporting"
+format: html
+editor: visual
+---
+
+```{r}
+library(shiny)
+library(tidyverse)
+library(sf)
+library(plotly)
+library(leaflet)
+library(tigris)
+library(shinythemes)
+```
+
+```{r}
+msp_census_tracts <- read.csv('data/minneapolis-tree-canopy.csv') %>%
+  select(region_name)
+
+msp_census_tracts <- msp_census_tracts %>%
+  mutate(region_name = str_replace_all(region_name, '[:alpha:]*', "") %>% str_trim()) %>%
+  filter(region_name != "27123043002") %>%
+  filter(region_name != "27053980000") %>%
+  pull(region_name) %>%
+  as.list()
+
+
+options(tigris_use_cache = TRUE)
+
+mn_tracts <- tracts(state = "MN", cb = FALSE, year = 2022)  
+
+mn_lake <- area_water(state = "MN", count = 'Hennepin')
+
+msp_census_tracts_spatial <- mn_tracts %>%
+  filter(GEOID %in%msp_census_tracts)
+
+### Zip Code Shp
+
+minneapolis_zip_codes <- c(
+  "55401", "55402", "55403", "55404", "55405", "55406", "55407", 
+  "55408", "55409", "55410", "55411", "55412", "55413", "55414", 
+  "55415", "55416", "55417", "55418", "55419", "55423", "55430",
+  "55454", "55455"
+) 
+
+zipcode <- zctas(starts_with = c("55"))
+
+zipcode <- zipcode %>% filter(ZCTA5CE20 %in% minneapolis_zip_codes)
+
+### Zip Code-Census Tract Crosswalk
+
+crosswalk <- st_join(msp_census_tracts_spatial, zipcode, join = st_intersects) %>% 
+  select(tract_id = GEOID, zip_code = ZCTA5CE20) %>%
+  distinct()
+
+## Social Vulnerability Index
+
+social_vulnerability <- read.csv('data/svi_2020.csv')
+
+social_vulnerability$FIPS <- social_vulnerability$FIPS %>% as.character()
+
+social_vulnerability <- social_vulnerability %>% 
+  mutate(RPL_THEMES = ifelse(as.numeric(RPL_THEMES)<0,0,RPL_THEMES )) 
+
+social_vulnerability_spatial <- msp_census_tracts_spatial %>% 
+  left_join(social_vulnerability, by = c('GEOID'= 'FIPS')) 
+
+
+## Air Pollution
+
+air_pollution_data_mn <- st_read('data/air_pollution_data_mn.csv')
+
+
+air_pollution_data_msp <- air_pollution_data_mn %>%
+  filter(ZIP_CODE %in% minneapolis_zip_codes) %>%
+  mutate(`EMISSIONS..LB.` = as.numeric(`EMISSIONS..LB.`)) %>%
+  mutate(`EMISSIONS..TONS.` = as.numeric(`EMISSIONS..TONS.`))
+
+air_pollution_data_msp_wide <- air_pollution_data_msp %>%
+  filter(POLLUTANT == "PM2.5 Primary") %>%
+  group_by( ZIP_CODE) %>%
+  summarize(
+    emissions_tons = sum(`EMISSIONS..TONS.`)
+  )
+
+air_pollution_data_msp_wide_with_zip_code_2022 <- zipcode %>% 
+  left_join(air_pollution_data_msp_wide, by = c("ZCTA5CE20" = "ZIP_CODE")) %>% 
+  st_intersection(crosswalk)
+
+## Tree Canopy
+
+tree_canopy <- read.csv('data/minneapolis-tree-canopy.csv')
+tree_canopy$region_name <- tree_canopy$region_name %>% str_replace_all('[:alpha:]*', "") %>% str_trim()
+
+tree_canopy_spatial <- msp_census_tracts_spatial %>% 
+  left_join(tree_canopy, by = c('GEOID'= 'region_name')) 
+
+## Join data
+
+tree_canopy_final <- tree_canopy_spatial %>%  st_drop_geometry()
+air_pollution_final <- air_pollution_data_msp_wide_with_zip_code_2022 %>%  st_drop_geometry() 
+social_vulnerability_spatial_final <- social_vulnerability_spatial %>% st_drop_geometry()
+
+## Joined today's data (SVI, Tree Canopy, and Air pollution)
+
+tree_canopy_final <- tree_canopy_spatial %>%  st_drop_geometry()
+air_pollution_final <- air_pollution_data_msp_wide_with_zip_code_2022 %>%  st_drop_geometry() 
+social_vulnerability_spatial_final <- social_vulnerability_spatial %>% st_drop_geometry()
+
+
+final <- tree_canopy_final %>%
+  left_join(air_pollution_final, by = c("GEOID" = "tract_id")) %>% 
+  left_join(social_vulnerability_spatial_final,by = c("GEOID" = "GEOID") ) %>% 
+  select(GEOID, tree_canopy_area, emissions_tons, RPL_THEMES ) %>% 
+  distinct() %>% 
+  mutate(emissions_tons = ifelse(is.na(emissions_tons), 0, emissions_tons)) %>% 
+  group_by(GEOID) %>% 
+  group_by(GEOID) %>% 
+  summarize(tree_canopy_area = tree_canopy_area,
+            air_pollution = mean(emissions_tons),
+            svi_index = RPL_THEMES) %>% 
+  ungroup() %>% 
+  distinct() %>% 
+  rename(
+    `Tree Canopy`=tree_canopy_area,
+    `Annual PM2.5 (tons)` = air_pollution
+  ) %>% 
+  filter(GEOID != 27123043002 ) %>% 
+  filter(GEOID != 27053980000)
+
+
+
+final_spatial <-msp_census_tracts_spatial %>% 
+  left_join(final, by = c("GEOID" = "GEOID"))
+
+# Final Writes
+st_write(final_spatial, "final_spatial_shp/final_spatial.shp")
+
+st_write(msp_lake, 'msp_lake_shp/msp_lake.shp')
+
+
+
+```
+
+## Redlining and Racial Covenants
+```{r}
+library(rjson)
+
+# Redlining
+redlining <- st_read('data/redlining.json') %>% filter(city == "Minneapolis") 
+st_write(redlining, 'redlining_msp.geojson')
+
+# Racial Covenants
+racial_cov <- st_read('data/Hennepin_County_Racial_Covenants_Table.csv') %>% 
+  filter(City == "MINNEAPOLIS",
+         !is.na(X),
+         !is.na(Y)) %>% 
+  mutate(X = as.numeric(X),
+         Y = as.numeric(Y)) %>% 
+  st_as_sf(coords = c("X","Y"), crs = "WGS84")
+st_write(racial_cov, 'data/racial_cov_msp.shp')
+
+```
+
+## SVI Data
+
+```{r}
+## SVI map data
+svi_index_list <- c("EP_POV150", "EP_UNEMP", "EP_UNINSUR", "EP_DISABL", "EP_MINRTY", "EP_CROWD")
+
+svi <- social_vulnerability %>% 
+  pivot_longer(cols = 8:158, names_to = "var", values_to = "val") %>% 
+  filter(var %in% svi_index_list) %>% 
+  select(!1:5) %>% 
+  select(!LOCATION) %>% 
+  mutate(var = case_when(
+    var == "EP_POV150" ~ "Poverty",
+    var == "EP_UNEMP" ~ "Unemployment",
+    var == "EP_UNINSUR" ~ "Uninsured",
+    var == "EP_DISABL" ~ "Disability",
+    var == "EP_MINRTY" ~ "Minority",
+    var == "EP_CROWD" ~ "Overcrowding"
+  ))
+
+write.csv(svi, 'data/svi.csv')
+```
+
+```{r}
+plot_ly(
+  type = 'scatterpolar',
+  r = svi$val,
+  theta = svi$var,
+  fill = 'toself',
+  fillcolor = 'green',
+  hoverinfo = 'none',  # Removed text, no hover information
+  mode = 'none',
+  opacity = .7
+) %>%
+  layout(
+    polar = list(
+      radialaxis = list(
+        visible = TRUE,
+        range = c(0, 100),  # Adjust the range dynamically based on your data
+        showticklabels = TRUE,  # Ensures tick labels are displayed
+        tickfont = list(color = "black", size = 15),  # Styling tick labels
+        gridcolor = "green"  # Sets gridline color
+      ),
+      angularaxis = list(
+        gridcolor = "green"  # Set the angular gridlines to green
+      )
+    ),
+    showlegend = FALSE
+  ) %>%
+  layout(plot_bgcolor = "transparent",
+         paper_bgcolor = "transparent") %>%
+  layout(font = list(color = '#FFBF00', size = 14))
+
+```
+
