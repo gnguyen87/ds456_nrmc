@@ -1,0 +1,28 @@
+project:
+  type: website
+  output-dir: _site
+  resources: 
+  - shinylive-sw.js
+
+website:  
+  title: "Homepage"
+  navbar:
+    search: false
+    left:
+      - text: "Background: Residential Seggregation"
+        file: index.qmd
+      - text: "MSP: Environmental Injustice"
+        file: msp_enviro_injustice.qmd
+      - text: "Why Urban Green Spaces"
+        file: urban_green_spaces.qmd
+
+format:
+  html:
+    grid: 
+      body-width: 1350px
+      sidebar-width: 200px
+      margin-width: 200px
+    toc: true
+    theme:
+      - custom.css
+
