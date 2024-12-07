@@ -187,35 +187,4 @@ svi <- social_vulnerability %>%
 write.csv(svi, 'data/svi.csv')
 ```
 
-```{r}
-plot_ly(
-  type = 'scatterpolar',
-  r = svi$val,
-  theta = svi$var,
-  fill = 'toself',
-  fillcolor = 'green',
-  hoverinfo = 'none',  # Removed text, no hover information
-  mode = 'none',
-  opacity = .7
-) %>%
-  layout(
-    polar = list(
-      radialaxis = list(
-        visible = TRUE,
-        range = c(0, 100),  # Adjust the range dynamically based on your data
-        showticklabels = TRUE,  # Ensures tick labels are displayed
-        tickfont = list(color = "black", size = 15),  # Styling tick labels
-        gridcolor = "green"  # Sets gridline color
-      ),
-      angularaxis = list(
-        gridcolor = "green"  # Set the angular gridlines to green
-      )
-    ),
-    showlegend = FALSE
-  ) %>%
-  layout(plot_bgcolor = "transparent",
-         paper_bgcolor = "transparent") %>%
-  layout(font = list(color = '#FFBF00', size = 14))
-
-```
 
