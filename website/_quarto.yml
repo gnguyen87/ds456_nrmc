@@ -9,9 +9,9 @@ website:
   navbar:
     search: false
     left:
-      - text: "Background: Residential Seggregation"
+      - text: "Residential Seggregation"
         file: index.qmd
-      - text: "MSP: Environmental Injustice"
+      - text: "Historical Environmental Injustice"
         file: msp_enviro_injustice.qmd
       - text: "Why Urban Green Spaces"
         file: urban_green_spaces.qmd
