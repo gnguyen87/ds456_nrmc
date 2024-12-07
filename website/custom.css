@@ -26,6 +26,9 @@ button {
   color: $primary;
 }
 
+b, strong {
+  color: #ffffff; // Set the color to white
+}
 code, pre {
   font-family: $poppins-font;
   background-color: darken($bg, 5%);

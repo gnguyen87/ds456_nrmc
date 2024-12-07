@@ -1,4 +1,32 @@
----
-title: "[Untitled]"
+![](assets/images/racial_cov.webp){fig-align="center"}
 
----
+# Racial Covenants
+
+Racial covenants are clauses inserted into property deeds to prevent non-White people from occupying and owning land since their presence were deemed to *“detrimental to property values”*. Introduced in the 1910s in MN, racial covenants legitimized residential segregation and gave way to the practice in redlining in the 1940s.
+
+Racial covenants are among the many tools to decrease home-ownership rates of African American, contributing to their generational dispossession and displacement.
+
+# Why does it matter?
+
+The legacy of residential segregation has led to stark environmental injustice that tremendously ails Black, Latino, and Native American families in Minneapolis:
+
+-   **6x asthma death risk**
+    -   Among those who were under age 65, the asthma death rate for Black Minnesotans was 6 times higher than it was for white Minnesotans.
+-   **3x higher infant mortality**
+    -   Infant mortality rate for Native Americans is nearly 3x higher than that of white Minnesotans.
+-   **9x positive COVID-19 tests**
+    -   Latinx Minnesotans are testing positive at more than 4 times the overall population and 9 times the white population.
+-   **2x the cancer risk**
+    -   Black Minnesotans have 2.25 times the cancer risk as the average Minnesotan
+
+# Our site visits (probably should have a more interesting title)
+
+# Our interests
+
+## Motivation
+
+Black and Indigenous people in the U.S. are expected to “bear the brunt of the impact for the “greater good””. And there has been extensive research around environmental injustice, yet they tend to merely provide a snapshot of this picture at a moment in time. How can we contextualize and provide a comprehensive portrayal of this injustice?
+
+## Research question
+
+Looking at historically racially covenanted neighborhoods in Minneapolis and present day environmental data, can we still see patterns in the impact of residential seggregation on the disparity of climate change effects? In other words, *how much does the introduction of racial covenants in the 1910s impact the environmental inequality in Minneapolis that we see today? How can we, then, inform environmental practices with data?*
