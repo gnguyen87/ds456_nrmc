@@ -136,10 +136,9 @@ final_spatial <-msp_census_tracts_spatial %>%
   left_join(final, by = c("GEOID" = "GEOID"))
 
 # Final Writes
-# st_write(final_spatial, "final_spatial_shp/final_spatial.shp")
-# 
-# st_write(msp_lake, 'msp_lake_shp/msp_lake.shp')
 
+# st_write(msp_lake, 'msp_lake_shp/msp_lake.shp')
+# 
 
 
 ```
@@ -151,7 +150,7 @@ library(rjson)
 
 # Redlining
 redlining <- st_read('data/raw/redlining.json') %>% filter(city == "Minneapolis") 
-st_write(redlining, 'redlining_msp.geojson')
+# st_write(redlining, 'data/clean/redlining_msp.geojson')
 
 # Racial Covenants
 racial_cov <- st_read('data/raw/Hennepin_County_Racial_Covenants_Table.csv') %>% 
@@ -161,7 +160,7 @@ racial_cov <- st_read('data/raw/Hennepin_County_Racial_Covenants_Table.csv') %>%
   mutate(X = as.numeric(X),
          Y = as.numeric(Y)) %>% 
   st_as_sf(coords = c("X","Y"), crs = "WGS84")
-st_write(racial_cov, 'data/raw/racial_cov_msp.shp')
+# st_write(racial_cov, 'data/clean/racial_cov_msp.shp')
 
 ```
 
@@ -185,10 +184,40 @@ svi <- social_vulnerability %>%
     var == "EP_CROWD" ~ "Overcrowding"
   ))
 
-write.csv(svi, 'data/raw/svi.csv')
+# write.csv(svi, 'data/clean/svi.csv')
 ```
+
+## LST Data
 
 ```{r}
+#This is the shape files showing the Land Surface Temperature of Minneapolis
+lst_mpls_sf <- st_read("data/raw/msp_lst_shapefiles")
 
+lst_mpls_sf <- st_transform(lst_mpls_sf, st_crs(final_spatial))
+
+#Spatial join by geometry
+final_spatial_lst <- st_join(
+  final_spatial,
+  lst_mpls_sf%>% select(ls2022_)
+)
+
+#aggregate lst to census tract level
+final_spatial <- final_spatial_lst%>%
+  group_by(GEOID)%>%
+  summarize(
+    Tree_Canopy = first(`Tree Canopy`),
+    Annual_PM2.5 = first(`Annual PM2.5 (tons)`),
+    svi_index = first(svi_index),
+    mean_lst = mean(ls2022_, na.rm = TRUE),  
+    geometry = first(geometry)
+  )
+
+st_write(final_spatial, "data/clean/final_spatial.shp", delete_dsn = TRUE)
+
+data <- st_read("data/clean/final_spatial_shp")
+
+names(data)
 ```
+
+
 
