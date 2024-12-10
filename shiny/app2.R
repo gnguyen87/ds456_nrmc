@@ -9,16 +9,20 @@ library(bslib)
 options(rsconnect.max.bundle.size = 10e10)
 
 ## Redlining and Racial Covenants
-redlining <- st_read('data/redlining_msp.geojson')
+redlining <- st_read('data/redlining_msp_shp') %>% 
+  rename(grade = EQINTER20)
+
 racial_cov <- st_read('data/racial_cov_msp_shp') 
 
+
 ## Environmental Data
-variables <- c("Tree Canopy (%)", "Annual PM2.5 (tons)")
+variables <- c("Tree Canopy (%)", "Annual PM2.5 (tons)", "Mean LST (Fº)")
 
 final_spatial <- st_read('data/final_spatial_shp')  %>% 
   rename(svi_index = svi_ndx,
-         `Tree Canopy (%)` = `TrCn...`,
-         `Annual PM2.5 (tons)` = `APM2_5.`) 
+         `Tree Canopy (%)` = `Tr_Cnpy`,
+         `Annual PM2.5 (tons)` = `A_PM2_5`,
+         `Mean LST (Fº)`= `men_lst`) 
 
 msp_lake <- st_read('data/msp_lake_shp')
 
@@ -92,6 +96,12 @@ server <- function(input, output) {
                        fillOpacity = 0.01,
                        label = racial_cov$Address
       ) %>% 
+      addPolygons(data = msp_lake,
+                  color = "lightblue",  # Water outline color
+                  weight = 1,      # Outline thickness
+                  fillColor = "lightblue",  # Water fill color
+                  fillOpacity = 1 
+      ) %>%
       addLegend(
         data = redlining,
         position = "bottomright",
@@ -161,8 +171,16 @@ server <- function(input, output) {
   output$today_map <- renderLeaflet({
     
     var <- input$var
-
-    palette_function <- colorNumeric( palette = "Greens", domain = final_spatial[[var]])
+#ChatGPT cite: change the logic to if I pick "Tree Canopy (%)", "Annual PM2.5 (tons)", "Mean LST (Fº)" variables, I am able to change the density gradient color.
+    palette_function <- if (var == "Tree Canopy (%)") {
+      colorNumeric(palette = "Greens", domain = final_spatial[[var]])
+    } else if (var == "Mean LST (Fº)") {
+      colorNumeric(palette = "YlOrRd", domain = final_spatial[[var]])
+    } else if (var == "Annual PM2.5 (tons)") {
+      colorNumeric(palette = "plasma", domain = final_spatial[[var]])  
+    } else {
+      colorNumeric(palette = "viridis", domain = final_spatial[[var]])  
+    }
     
     today_map <- leaflet() %>%
       addTiles() %>%
