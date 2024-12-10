@@ -11,6 +11,6 @@
     "href": "urban_green_spaces.html",
     "title": "Adovocating for Equitable Access to Urban Green Spaces",
     "section": "",
-    "text": "Green space has been shown to improve mental health… xyz we can cite the papers we read earlier in our lit review.\n\n\nReading layer `redlining_msp' from data source \n  `/Users/mikaelyevans/Documents/GitHub/ds456_nrmc/data/clean/redlining_msp_shp/redlining_msp.shp' \n  using driver `ESRI Shapefile'\nSimple feature collection with 116 features and 14 fields\nGeometry type: POLYGON\nDimension:     XY\nBounding box:  xmin: -93.32916 ymin: 44.88979 xmax: -93.19404 ymax: 45.05125\nGeodetic CRS:  NAD83"
+    "text": "Green space has been shown to improve mental health… xyz we can cite the papers we read earlier in our lit review."
   }
 ]
