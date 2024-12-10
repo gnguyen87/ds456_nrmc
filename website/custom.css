@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+
+/*-- scss:defaults --*/
+
+/*-- scss:defaults --*/
+$bg: #043927;
+$fg: #FDB515;
+$title-color:#f1f3f1;
+$primary: #FDB515;
+$poppins-font: 'Poppins', sans-serif;
+$navbar-bg-color: #3F704D;  // Dark green
+$navbar-text-color: #FDB515; 
+$navbar-link-color: #FDB515; // Primary color for links
+$navbar-link-hover-color: #DA9100; // Hover color for links
+
+/*-- scss:rules --*/
+body {
+  background-color: $bg;
+  color: $fg;
+  font-family: $poppins-font;
+}
+
+
+button {
+  color: $primary;
+}
+
+b, strong {
+  color: #ffffff; // Set the color to white
+}
+code, pre {
+  font-family: $poppins-font;
+  background-color: darken($bg, 5%);
+  color: $primary;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.navbar {
+    background-color: $navbar-bg-color;
+    color: $navbar-text-color;
+    font-family: $poppins-font;
+    padding: 1rem;
+    
+    // Navbar links
+    .navbar-link {
+      color: $navbar-link-color;
+      text-decoration: none;
+      font-weight: $font-weight-normal;
+      padding: 0.5rem;
+      
+      &:hover {
+        color: $navbar-link-hover-color;
+      }
+    }
+  
+    // Navbar items (e.g., list of links)
+    .navbar-items {
+      display: flex;
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+  
+      .navbar-item {
+        margin-right: 1.5rem;
+      }
+    }
+  }
+
+h1, h2, h3, h4, h5, h6 {
+  color: $title-color;
+}

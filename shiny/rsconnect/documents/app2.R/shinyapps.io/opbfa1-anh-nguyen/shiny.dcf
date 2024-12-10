@@ -1,0 +1,12 @@
+name: shiny
+title: shiny
+username: opbfa1-anh-nguyen
+account: opbfa1-anh-nguyen
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 13523353
+bundleId: 9464030
+url: https://opbfa1-anh-nguyen.shinyapps.io/shiny/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
