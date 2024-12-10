@@ -18,7 +18,7 @@ library(dplyr)
 library(tidyr)
 ```
 
-```{r, message=FALSE, echo=FALSE}
+```{r, message=FALSE, echo=FALSE, include=FALSE}
 # Downloading MN All Park ArcGIS data from Metropolitan Council
 base_url2 <- "https://services.arcgis.com/afSMGVsC7QlRK1kZ/arcgis/rest/services/Parks/FeatureServer/0/query"
 # geometryType=esriGeometryEnvelope&geometry={xmin: -104, ymin: 35.6, xmax: -94.32, ymax: 41}
@@ -51,12 +51,12 @@ writeBin(content(response2, as = "raw"), temp_geojson2)
 geojson_sf_2 <- st_read(temp_geojson2)
 ```
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, include = FALSE}
 # Downloading other important data from GitHub
 air_pollution <- read.csv("../data/raw/air_pollution_data_mn.csv")
 racial_covenants <- read.csv("../data/raw/Hennepin_County_Racial_Covenants_Table.csv")
 tree_canopy <- read.csv("../data/raw/minneapolis-tree-canopy.csv")
 svi <- read.csv("../data/clean/svi.csv")
-holc <- st_read("../holc_data.json")
+holc <- st_read("../data/clean/redlining_msp_shp/redlining_msp.shp")
 ```
 
