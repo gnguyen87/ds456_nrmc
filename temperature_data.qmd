@@ -4,14 +4,32 @@ format: html
 editor: visual
 ---
 
-you need the Minneapolis_City_Cleaned.tif raster file and it is in your slack inbox. msp_sf is the surface temperature data.
+lst_mpls_sf is my temperature data
 
 ```{r}
-msp_tif <- rast("~/Documents/School/Capstone/project files copy/data/Minneapolis_City_Cleaned.tif")
+lst_mpls_sf <- st_read("/Users/munkhbatbatsaikhan/Documents/School/Capstone/project files copy/lst_mpls_sf.dbf")
 
-msp_poly <-  as.polygons(msp_tif, dissolve = TRUE)
+lst_mpls_sf <- st_transform(lst_mpls_sf, st_crs(census_with_covenants))
 
-msp_sf <- st_as_sf(msp_poly)
+lst_mpls_sf_with_geoids <- st_join(lst_mpls_sf, census_with_covenants %>% select(GEOID))
 
-msp_sf
+#integrating with my final dataset now
+
+lst_final <- final%>%
+  left_join(lst_mpls_sf_with_geoids%>% st_drop_geometry()%>% rename(surface_temperature=ls2022_), by="GEOID")
+
+# Aggregate LST to Census Tract Level
+lst <- lst_final %>%
+  group_by(GEOID) %>%
+  summarize(
+    tree_canopy_area = first(tree_canopy_area),
+    air_pollution = first(air_pollution),
+    svi_index = first(svi_index),
+    holc_grade = first(holc_grade),
+    has_covenant = first(has_covenant),
+    mean_lst = mean(surface_temperature, na.rm = TRUE)
+  ) %>%
+  ungroup()
+
+
 ```
