@@ -9,7 +9,9 @@ library(bslib)
 options(rsconnect.max.bundle.size = 10e10)
 
 ## Redlining and Racial Covenants
-redlining <- st_read('data/redlining_msp.geojson')
+redlining <- st_read('data/redlining_msp_shp') %>% 
+  rename(grade = EQINTER20)
+
 racial_cov <- st_read('data/racial_cov_msp_shp') 
 
 
@@ -94,6 +96,12 @@ server <- function(input, output) {
                        fillOpacity = 0.01,
                        label = racial_cov$Address
       ) %>% 
+      addPolygons(data = msp_lake,
+                  color = "lightblue",  # Water outline color
+                  weight = 1,      # Outline thickness
+                  fillColor = "lightblue",  # Water fill color
+                  fillOpacity = 1 
+      ) %>%
       addLegend(
         data = redlining,
         position = "bottomright",
