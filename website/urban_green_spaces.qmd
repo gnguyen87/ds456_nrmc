@@ -1,4 +1,62 @@
 ---
 title: "Adovocating for Equitable Access to Urban Green Spaces"
+author: "Mikaely Evans"
+format: 
+  html:
+    page-layout: full
 ---
+
+Green space has been shown to improve mental health... xyz we can cite the papers we read earlier in our lit review.
+
+```{r, message=FALSE, echo=FALSE}
+library(httr)
+library(jsonlite)
+library(sf)
+library(ggplot2)
+library(ggspatial)
+library(dplyr)
+library(tidyr)
+```
+
+```{r, message=FALSE, echo=FALSE}
+# Downloading MN All Park ArcGIS data from Metropolitan Council
+base_url2 <- "https://services.arcgis.com/afSMGVsC7QlRK1kZ/arcgis/rest/services/Parks/FeatureServer/0/query"
+# geometryType=esriGeometryEnvelope&geometry={xmin: -104, ymin: 35.6, xmax: -94.32, ymax: 41}
+# {
+#   "x": <x>,
+#   "y": <y>,
+#   "z": <z>,
+#   "m": <m>,
+#   "id":<id>,
+#   "spatialReference": { <spatialReference> }
+# }
+query_params2 <- list(
+  geometry = '{
+    "xmin": -10394540.56,
+    "ymin": 5603024.26,
+    "xmax": -10373503.03,
+    "ymax":  5629581.38,
+    "spatialReference": {"wkid":102100} 
+  }',
+  geometryType2 = "esriGeometryEnvelope",
+  outFields = "*",
+  f = "geojson"
+)
+response2 <- GET(base_url2, query = query_params2)
+geojson_data2 <- content(response2, as = "text", encoding = "UTF-8") %>% fromJSON()
+temp_geojson2 <- tempfile(fileext = ".geojson")
+
+writeBin(content(response2, as = "raw"), temp_geojson2)
+# Read the GeoJSON data as a shape file object
+geojson_sf_2 <- st_read(temp_geojson2)
+```
+
+```{r, echo=FALSE}
+# Downloading other important data from GitHub
+air_pollution <- read.csv("../data/raw/air_pollution_data_mn.csv")
+racial_covenants <- read.csv("../data/raw/Hennepin_County_Racial_Covenants_Table.csv")
+tree_canopy <- read.csv("../data/raw/minneapolis-tree-canopy.csv")
+svi <- read.csv("../data/clean/svi.csv")
+holc <- st_read("../holc_data.json")
+```
 
