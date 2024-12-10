@@ -16,7 +16,7 @@ library(shinythemes)
 ```
 
 ```{r}
-msp_census_tracts <- read.csv('data/minneapolis-tree-canopy.csv') %>%
+msp_census_tracts <- read.csv('data/raw/minneapolis-tree-canopy.csv') %>%
   select(region_name)
 
 msp_census_tracts <- msp_census_tracts %>%
@@ -57,7 +57,7 @@ crosswalk <- st_join(msp_census_tracts_spatial, zipcode, join = st_intersects) %
 
 ## Social Vulnerability Index
 
-social_vulnerability <- read.csv('data/svi_2020.csv')
+social_vulnerability <- read.csv('data/raw/svi_2020.csv')
 
 social_vulnerability$FIPS <- social_vulnerability$FIPS %>% as.character()
 
@@ -70,7 +70,7 @@ social_vulnerability_spatial <- msp_census_tracts_spatial %>%
 
 ## Air Pollution
 
-air_pollution_data_mn <- st_read('data/air_pollution_data_mn.csv')
+air_pollution_data_mn <- st_read('data/raw/air_pollution_data_mn.csv')
 
 
 air_pollution_data_msp <- air_pollution_data_mn %>%
@@ -91,7 +91,7 @@ air_pollution_data_msp_wide_with_zip_code_2022 <- zipcode %>%
 
 ## Tree Canopy
 
-tree_canopy <- read.csv('data/minneapolis-tree-canopy.csv')
+tree_canopy <- read.csv('data/raw/minneapolis-tree-canopy.csv')
 tree_canopy$region_name <- tree_canopy$region_name %>% str_replace_all('[:alpha:]*', "") %>% str_trim()
 
 tree_canopy_spatial <- msp_census_tracts_spatial %>% 
@@ -136,31 +136,32 @@ final_spatial <-msp_census_tracts_spatial %>%
   left_join(final, by = c("GEOID" = "GEOID"))
 
 # Final Writes
-st_write(final_spatial, "final_spatial_shp/final_spatial.shp")
-
-st_write(msp_lake, 'msp_lake_shp/msp_lake.shp')
+# st_write(final_spatial, "final_spatial_shp/final_spatial.shp")
+# 
+# st_write(msp_lake, 'msp_lake_shp/msp_lake.shp')
 
 
 
 ```
 
 ## Redlining and Racial Covenants
+
 ```{r}
 library(rjson)
 
 # Redlining
-redlining <- st_read('data/redlining.json') %>% filter(city == "Minneapolis") 
+redlining <- st_read('data/raw/redlining.json') %>% filter(city == "Minneapolis") 
 st_write(redlining, 'redlining_msp.geojson')
 
 # Racial Covenants
-racial_cov <- st_read('data/Hennepin_County_Racial_Covenants_Table.csv') %>% 
+racial_cov <- st_read('data/raw/Hennepin_County_Racial_Covenants_Table.csv') %>% 
   filter(City == "MINNEAPOLIS",
          !is.na(X),
          !is.na(Y)) %>% 
   mutate(X = as.numeric(X),
          Y = as.numeric(Y)) %>% 
   st_as_sf(coords = c("X","Y"), crs = "WGS84")
-st_write(racial_cov, 'data/racial_cov_msp.shp')
+st_write(racial_cov, 'data/raw/racial_cov_msp.shp')
 
 ```
 
@@ -184,7 +185,10 @@ svi <- social_vulnerability %>%
     var == "EP_CROWD" ~ "Overcrowding"
   ))
 
-write.csv(svi, 'data/svi.csv')
+write.csv(svi, 'data/raw/svi.csv')
 ```
 
+```{r}
+
+```
 
