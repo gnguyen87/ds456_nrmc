@@ -123,15 +123,15 @@ leaflet(data = mn_census_tract_3) %>%
     weight = 1,
     opacity = 1,
     fillOpacity = 0.9,
-    popup = ~paste("Park Area:", total_park_area)
+    popup = ~paste("Park Area:", total_park_area, "m\u00B2")
   ) %>%
   
   addLegend(
     "bottomright",
     pal = palette,
     values = ~total_park_area,
-    title = "Total Park Area (m^2)",
-    opacity = 1
+    opacity = 0,
+    title = "Total Park Area (m\u00B2)"
   ) %>%
   
   addControl("Total Park Area by Census Tract in Minneapolis", position = "topright")
