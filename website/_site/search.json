@@ -4,13 +4,27 @@
     "href": "msp_enviro_injustice.html",
     "title": "Examining The Roots of Environmental Injustice in Minneapolis",
     "section": "",
-    "text": "This interactive dashboard shows the legacy of residential segregation, one that has led to stark environmental injustice that tremendously ails Black, Latino, and Native American families in Minneapolis.\nThe correlation between climate change effects and marginalized neighborhoods are apparent: the more socially vulnerable a neighborhood is, the more exposed they are to the effects of climate change—and we can trace this back to residential seggregation practices from the early 20th century. [add svi ~ holc model info + interpretation here?]"
+    "text": "This interactive dashboard shows the legacy of residential segregation, one that has led to stark environmental injustice that tremendously ails Black, Latino, and Native American families in Minneapolis.\nThe correlation between climate change effects and marginalized neighborhoods are apparent: the more socially vulnerable a neighborhood is, the more exposed they are to the effects of climate change—and we can trace this back to residential seggregation practices from the early 20th century.\nThe Social Vulnerability Index is an index score released by the CDC that utilizes a variety of survey variables to highlight communities’ social vulnerability, which is defined as “certain social conditions, including high poverty, low percentage of vehicle access, or crowded households, among others, may affect that community’s ability to prevent human suffering and financial loss in the event of a disaster.” [cite SVI documentation] A linear model of the impact of historical redlining grades on the SVI score of Minneapolis census tracts shows the following predicted SVI results, with significant p-values (SVI scores are in a percentile range from 0 to 1, with 1 the most vulnerable:\n\nA (“Best”): 0.25683\nB (“Still Desirable”): 0.48408\nC (“Definitely Declining”): 0.84779\nD (“Hazardous”): 0.73834\n\nNeighborhoods given grades of C and D - almost always neighborhoods mostly populated by people of color - clearly still face the adverse consequences of redlining and similar practices in the form of increased vulnerability to climate disasters and other soicioeconomic issues today."
   },
   {
     "objectID": "urban_green_spaces.html",
     "href": "urban_green_spaces.html",
     "title": "Adovocating for Equitable Access to Urban Green Spaces",
     "section": "",
-    "text": "Green space has been shown to improve mental health… xyz we can cite the papers we read earlier in our lit review."
+    "text": "Green space has been shown to improve mental health… xyz we can cite the papers we read earlier in our lit review.\n\n\n\n\n\n\nInclude tables of statistics and calls to action"
+  },
+  {
+    "objectID": "index.html#motivation",
+    "href": "index.html#motivation",
+    "title": "Racial Covenants",
+    "section": "Motivation",
+    "text": "Motivation\nBlack and Indigenous people in the U.S. are expected to “bear the brunt of the impact for the “greater good””. And there has been extensive research around environmental injustice, yet they tend to merely provide a snapshot of this picture at a moment in time. How can we contextualize and provide a comprehensive portrayal of this injustice?"
+  },
+  {
+    "objectID": "index.html#research-question",
+    "href": "index.html#research-question",
+    "title": "Racial Covenants",
+    "section": "Research question",
+    "text": "Research question\nLooking at historically racially covenanted neighborhoods in Minneapolis and present day environmental data, can we still see patterns in the impact of residential seggregation on the disparity of climate change effects? In other words, how much does the introduction of racial covenants in the 1910s impact the environmental inequality in Minneapolis that we see today? How can we, then, inform environmental practices with data?"
   }
 ]

@@ -17,6 +17,7 @@ library(ggspatial)
 library(dplyr)
 library(tidyr)
 library(stringr)
+library(leaflet)
 ```
 
 ```{r, message=FALSE, echo=FALSE, include=FALSE}
@@ -105,6 +106,75 @@ mn_census_tract_2 <- lakeless_tracts %>%
   mutate(park_area_ratio = str_remove(park_area_ratio, "[1/m^2]")) %>%
   mutate(park_area_ratio = as.numeric(park_area_ratio))
 ```
+
+```{r, echo = FALSE}
+# Adding Leaflet Map
+palette <- colorNumeric(palette = rev("Greens"), domain=mn_census_tract_2$total_park_area)
+mn_census_tract_3 <- st_collection_extract(mn_census_tract_2, type = "POLYGON") %>%
+  mutate(total_park_area = round(total_park_area, digits = 2))
+
+leaflet(data = mn_census_tract_3) %>%
+  
+  addProviderTiles("OpenStreetMap") %>% 
+
+  addPolygons(
+    fillColor = ~palette(total_park_area),
+    color = "black",
+    weight = 1,
+    opacity = 1,
+    fillOpacity = 0.9,
+    popup = ~paste("Park Area:", total_park_area)
+  ) %>%
+  
+  addLegend(
+    "bottomright",
+    pal = palette,
+    values = ~total_park_area,
+    title = "Total Park Area (m^2)",
+    opacity = 1
+  ) %>%
+  
+  addControl("Total Park Area by Census Tract in Minneapolis", position = "topright")
+```
+
+
+
+```{r, include = FALSE}
+# Redlining per census tract data from GitHub/Na's code
+msp_census_tracts <- read.csv("../data/raw/minneapolis-tree-canopy.csv") %>%  select(region_name)
+msp_census_tracts <- msp_census_tracts %>%
+  mutate(region_name = str_replace_all(region_name, '[:alpha:]*', "") %>% str_trim()) %>%
+  filter(region_name != "27123043002") %>%
+  filter(region_name != "27053980000") %>%
+  pull(region_name) %>%
+  as.list()
+
+redlining <- st_read('../data/raw/141121-V2/HRS2020B.shp')
+redlining_msp <- redlining %>%
+  filter(GEOID20 %in% msp_census_tracts) %>%
+  st_drop_geometry() %>%
+  rename(holc_grade = EQINTER20) %>%
+  mutate(holc_grade = case_when(
+    holc_grade == 1 ~ "A",
+    holc_grade == 2 ~ "B",
+    holc_grade == 3 ~ "C",
+    holc_grade == 4 ~ "D",
+  ))
+
+redlining_parks <- redlining_msp %>%
+  select(GEOID20, holc_grade) %>%
+  st_drop_geometry() %>%
+  inner_join(mn_census_tract_2, by = c("GEOID20" = "GEOID"))
+lm_redline_parks <- lm(total_park_area ~ holc_grade, data = redlining_parks)
+summary(lm_redline_parks)
+```
+
+Include tables of statistics and calls to action
+
+
+
+
+
 
 
 
