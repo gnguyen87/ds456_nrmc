@@ -109,7 +109,7 @@ mn_census_tract_2 <- lakeless_tracts %>%
 
 ```{r, echo = FALSE}
 # Adding Leaflet Map
-palette <- colorNumeric(palette = rev("Greens"), domain=mn_census_tract_2$total_park_area)
+palette <- colorNumeric(palette = rev("Purples"), domain=mn_census_tract_2$total_park_area)
 mn_census_tract_3 <- st_collection_extract(mn_census_tract_2, type = "POLYGON") %>%
   mutate(total_park_area = round(total_park_area, digits = 2))
 
