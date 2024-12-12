@@ -1,15 +1,160 @@
 ---
 title: "Examining The Roots of Environmental Injustice in Minneapolis"
 author: "Na Nguyen"
-format: 
-  html:
-    page-layout: full
+format:
+    closeread-html:
+      theme: custom.css
+      page-layout: full
+      cr-style:
+        narrative-font-size: "24px"
 ---
 
-This interactive dashboard shows the legacy of residential segregation, one that has led to stark environmental injustice that tremendously ails Black, Latino, and Native American families in Minneapolis. 
+
+This interactive dashboard shows the legacy of residential segregation, one that has led to stark environmental injustice that tremendously ails Black, Latino, and Native American families in Minneapolis.
 
 The correlation between climate change effects and marginalized neighborhoods are **apparent**: *the more socially vulnerable a neighborhood is, the more exposed they are to the effects of climate change---and we can trace this back to residential seggregation practices from the early 20th century.* [add svi ~ holc model info + interpretation here?]
 
 <iframe src="https://opbfa1-anh-nguyen.shinyapps.io/msp_enviro_no_title/" style="width: 90%; height: 920px;display: block; margin-left: auto; margin-right: auto; ">
 
 </iframe>
+
+:::{.cr-section}
+
+### Racial Covenants and Land Surface Temperature
+
+@cr-map-lst The map shown on the right are racial covenants and mean land surface temperature map per census tract. As you can see that are with higher mean LST are in places with lower HOLC Grade and little to no racial covenants areas. Similarly, areas with higher HOLC Grade and with many racial covenants areas experience lower mean LST.
+
+:::{#cr-map-lst}
+![](assets/images/racial_cov.png)
+![](assets/images/mean_lst.png)
+
+:::
+
+---
+
+### Racial Covenants and Social Vulnerability
+
+:::{#cr-map-pollution}
+![](assets/images/racial_cov.png)
+![](assets/images/svi.png)
+
+:::
+
+@cr-map-pollution Now the map shown on the right are racial covenants compared with air pollution map. Similarly to LST, you can see areas with higher annual PM2.5 are areas with low HOLC Grade, such as C and D, and places with little to no racial covenants
+
+---
+
+### Racial Covenants and Air Pollution
+
+:::{#cr-map-svi }
+![](assets/images/racial_cov.png)
+![](assets/images/air_pollution.png)
+:::
+
+@cr-map-svi Now the map shown on the right are racial covenants compared with social vulnerability map. You can see that places with higher social vulnerability index score are places with low HOLC Grade and places with little to no racial covenant areas.
+
+---
+
+
+As you can see, environmental injustices are deeply tied to historical segregation practices. To further study these patterns, we analyzed key numerical results:
+
+:::{#cr-lst-boxplot}
+![](assets/images/lst_boxplot.png)
+
+:::
+
+@cr-lst-boxplot
+- **Land Surface Temperature (LST)**:
+
+  - On average, census tracts with higher social vulnerability had mean land surface temperatures that were **2.22°F higher** than less vulnerable areas, even when controlling for tree canopy coverage.
+  - The median of mean land surface temperature for socially vulnerable group is **95.78**, and The median of mean land surface temperature for socially not vulnerable group is **93.78**.
+
+:::{#cr-air_pollution-boxplot}
+![](assets/images/air_pollution_boxplot.png)
+:::
+
+@cr-air_pollution-boxplot
+
+
+- **Annual Air Pollution**:
+
+  - On average, census tracts with higher social vulnerability had annual air pollution **0.97 tons** than less vulnerable areas, even when controlling for tree canopy coverage.
+  - The median of annual air pollution for socially vulnerable group is **1.597467 tons**, and The median of mean land surface temperature for socially not vulnerable group is **1.013138 tons**.
+
+
+:::
+
+
+
+
+
+
+
+
+<!-- ## Side-by-Side Comparison -->
+
+<!-- ::: {.grid} -->
+
+<!-- ::: {.g-col-6} -->
+
+<!-- ![](assets/images/racial_cov.png){fig-align="center" width="100%"} -->
+
+<!-- **Racial Covenants** -->
+
+<!-- ::: -->
+
+<!-- ::: {.g-col-6} -->
+
+<!-- ![](assets/images/mean_lst.png){fig-align="center" width="100%"} -->
+
+<!-- **Mean Land Surface Temperatures** -->
+
+<!-- ::: -->
+
+<!-- ::: -->
+
+<!-- ::: {.grid} -->
+
+<!-- ::: {.g-col-6} -->
+
+<!-- ![](assets/images/tree_canoph.png){fig-align="center" width="100%"} -->
+
+<!-- **Tree Canopy** -->
+
+<!-- ::: -->
+
+<!-- ::: {.g-col-6} -->
+
+<!-- ![](assets/images/air_pollution.png){fig-align="center" width="100%"} -->
+
+<!-- **Air Pollution** -->
+
+<!-- ::: -->
+
+<!-- ::: -->
+
+<!-- ::: {.callout-note} -->
+
+<!-- #### Key Observations: -->
+
+<!-- - Areas with **high mean land surface temperatures** are strongly correlated with **low tree canopy coverage** and **high air pollution levels**. -->
+
+<!-- - These regions overlap with areas having **lower HOLC grades** and **little to no racial covenants**, highlighting systemic disparities. -->
+
+<!-- ::: -->
+
+<!-- ## Regression Insights -->
+
+<!-- To understand these patterns quantitatively, we used regression analysis to explore the relationship between social vulnerability, tree canopy coverage, and mean land surface temperatures. -->
+
+<!-- ### Findings: -->
+
+<!-- - Socially vulnerable neighborhoods experience a **2.22°F increase** in mean land surface temperature compared to less vulnerable areas, holding tree canopy constant. -->
+
+<!-- - Tree canopy significantly mitigates land surface temperatures, with higher coverage reducing the impact of social vulnerability. -->
+
+<!-- ::: {.callout-note} -->
+
+<!-- This underscores how historical practices of residential segregation continue to shape environmental conditions, exacerbating disparities in vulnerable communities. -->
+
+<!-- ::: -->

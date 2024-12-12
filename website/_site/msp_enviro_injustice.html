@@ -40,6 +40,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/intersection-observer-polyfill-1.0.0/intersection-observer.js"></script>
+<script src="site_libs/quarto-contrib/scrollama-3.2.0/scrollama.min.js"></script>
+<script src="site_libs/quarto-contrib/closeread-0.1.0/closeread.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -67,8 +70,11 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<meta cr-debug-mode="false">
+<meta cr-remove-header-space="false">
 
 
+<link rel="stylesheet" href="site_libs/quarto-contrib/quarto-project/qmd-lab/closeread/closeread.css">
 </head>
 
 <body class="nav-fixed">
@@ -111,11 +117,16 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
-    </div>
+    
 <!-- main -->
 <main class="content column-page" id="quarto-document-content">
+      <!-- user-provided yaml closeread style options -->
+      <style>
+        :root {
+          --cr-narrative-font-size: 24px;
+        }
+      </style>
+    
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -143,9 +154,139 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>This interactive dashboard shows the legacy of residential segregation, one that has led to stark environmental injustice that tremendously ails Black, Latino, and Native American families in Minneapolis.</p>
-<p>The correlation between climate change effects and marginalized neighborhoods are <strong>apparent</strong>: <em>the more socially vulnerable a neighborhood is, the more exposed they are to the effects of climate change—and we can trace this back to residential seggregation practices from the early 20th century.</em></p>
+<p>The correlation between climate change effects and marginalized neighborhoods are <strong>apparent</strong>: <em>the more socially vulnerable a neighborhood is, the more exposed they are to the effects of climate change—and we can trace this back to residential seggregation practices from the early 20th century.</em> [add svi ~ holc model info + interpretation here?]</p>
 <iframe src="https://opbfa1-anh-nguyen.shinyapps.io/msp_enviro_no_title/" style="width: 90%; height: 920px;display: block; margin-left: auto; margin-right: auto; ">
 </iframe>
+<div class="cr-section cr-column-screen sidebar-left">
+<div class="narrative-col">
+<section id="racial-covenants-and-land-surface-temperature" class="level3 narrative trigger">
+<h3 class="narrative anchored" data-anchor-id="racial-covenants-and-land-surface-temperature">Racial Covenants and Land Surface Temperature</h3>
+</section>
+<div class="trigger new-trigger" data-focus-on="cr-map-lst">
+<div class="narrative">
+<p>The map shown on the right are racial covenants and mean land surface temperature map per census tract. As you can see that are with higher mean LST are in places with lower HOLC Grade and little to no racial covenants areas. Similarly, areas with higher HOLC Grade and with many racial covenants areas experience lower mean LST.</p>
+</div>
+</div>
+<div class="trigger">
+<div class="narrative">
+<hr>
+</div>
+</div>
+<section id="racial-covenants-and-social-vulnerability" class="level3 narrative trigger">
+<h3 class="narrative anchored" data-anchor-id="racial-covenants-and-social-vulnerability">Racial Covenants and Social Vulnerability</h3>
+</section>
+<div class="trigger new-trigger" data-focus-on="cr-map-pollution">
+<div class="narrative">
+<p>Now the map shown on the right are racial covenants compared with air pollution map. Similarly to LST, you can see areas with higher annual PM2.5 are areas with low HOLC Grade, such as C and D, and places with little to no racial covenants</p>
+</div>
+</div>
+<div class="trigger">
+<div class="narrative">
+<hr>
+</div>
+</div>
+<section id="racial-covenants-and-air-pollution" class="level3 narrative trigger">
+<h3 class="narrative anchored" data-anchor-id="racial-covenants-and-air-pollution">Racial Covenants and Air Pollution</h3>
+</section>
+<div class="trigger new-trigger" data-focus-on="cr-map-svi">
+<div class="narrative">
+<p>Now the map shown on the right are racial covenants compared with social vulnerability map. You can see that places with higher social vulnerability index score are places with low HOLC Grade and places with little to no racial covenant areas.</p>
+</div>
+</div>
+<div class="trigger">
+<div class="narrative">
+<hr>
+</div>
+</div>
+<div class="trigger">
+<div class="narrative">
+<p>As you can see, environmental injustices are deeply tied to historical segregation practices. To further study these patterns, we analyzed key numerical results:</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-lst-boxplot">
+<div class="narrative">
+<p><strong>Land Surface Temperature (LST)</strong>:</p>
+</div>
+</div>
+<div class="trigger">
+<div class="narrative">
+<ul>
+<li>On average, census tracts with higher social vulnerability had mean land surface temperatures that were <strong>2.22°F higher</strong> than less vulnerable areas, even when controlling for tree canopy coverage.</li>
+<li>The median of mean land surface temperature for socially vulnerable group is <strong>95.78</strong>, and The median of mean land surface temperature for socially not vulnerable group is <strong>93.78</strong>.</li>
+</ul>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-air_pollution-boxplot">
+<div class="narrative">
+
+</div>
+</div>
+<div class="trigger">
+<div class="narrative">
+<ul>
+<li><p><strong>Annual Air Pollution</strong>:</p>
+<ul>
+<li>On average, census tracts with higher social vulnerability had annual air pollution <strong>0.97 tons</strong> than less vulnerable areas, even when controlling for tree canopy coverage.</li>
+<li>The median of annual air pollution for socially vulnerable group is <strong>1.597467 tons</strong>, and The median of mean land surface temperature for socially not vulnerable group is <strong>1.013138 tons</strong>.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sticky-col">
+<div class="sticky-col-stack">
+<div id="cr-map-lst" class="sticky">
+<p><img src="assets/images/racial_cov.png" class="img-fluid"> <img src="assets/images/mean_lst.png" class="img-fluid"></p>
+</div>
+<div id="cr-map-pollution" class="sticky">
+<p><img src="assets/images/racial_cov.png" class="img-fluid"> <img src="assets/images/svi.png" class="img-fluid"></p>
+</div>
+<div id="cr-map-svi" class="sticky">
+<p><img src="assets/images/racial_cov.png" class="img-fluid"> <img src="assets/images/air_pollution.png" class="img-fluid"></p>
+</div>
+<div id="cr-lst-boxplot" class="sticky">
+<p><img src="assets/images/lst_boxplot.png" class="img-fluid"></p>
+</div>
+<div id="cr-air_pollution-boxplot" class="sticky">
+<p><img src="assets/images/air_pollution_boxplot.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+</div>
+<!-- ## Side-by-Side Comparison -->
+<!-- ::: {.grid} -->
+<!-- ::: {.g-col-6} -->
+<!-- ![](assets/images/racial_cov.png){fig-align="center" width="100%"} -->
+<!-- **Racial Covenants** -->
+<!-- ::: -->
+<!-- ::: {.g-col-6} -->
+<!-- ![](assets/images/mean_lst.png){fig-align="center" width="100%"} -->
+<!-- **Mean Land Surface Temperatures** -->
+<!-- ::: -->
+<!-- ::: -->
+<!-- ::: {.grid} -->
+<!-- ::: {.g-col-6} -->
+<!-- ![](assets/images/tree_canoph.png){fig-align="center" width="100%"} -->
+<!-- **Tree Canopy** -->
+<!-- ::: -->
+<!-- ::: {.g-col-6} -->
+<!-- ![](assets/images/air_pollution.png){fig-align="center" width="100%"} -->
+<!-- **Air Pollution** -->
+<!-- ::: -->
+<!-- ::: -->
+<!-- ::: {.callout-note} -->
+<!-- #### Key Observations: -->
+<!-- - Areas with **high mean land surface temperatures** are strongly correlated with **low tree canopy coverage** and **high air pollution levels**. -->
+<!-- - These regions overlap with areas having **lower HOLC grades** and **little to no racial covenants**, highlighting systemic disparities. -->
+<!-- ::: -->
+<!-- ## Regression Insights -->
+<!-- To understand these patterns quantitatively, we used regression analysis to explore the relationship between social vulnerability, tree canopy coverage, and mean land surface temperatures. -->
+<!-- ### Findings: -->
+<!-- - Socially vulnerable neighborhoods experience a **2.22°F increase** in mean land surface temperature compared to less vulnerable areas, holding tree canopy constant. -->
+<!-- - Tree canopy significantly mitigates land surface temperatures, with higher coverage reducing the impact of social vulnerability. -->
+<!-- ::: {.callout-note} -->
+<!-- This underscores how historical practices of residential segregation continue to shape environmental conditions, exacerbating disparities in vulnerable communities. -->
+<!-- ::: -->
 
 
 

@@ -211,13 +211,10 @@ final_spatial <- final_spatial_lst%>%
     mean_lst = mean(ls2022_, na.rm = TRUE),  
     geometry = first(geometry)
   )
+# 
+# st_write(final_spatial, "data/clean/final_spatial.shp", delete_dsn = TRUE)
+# 
+# data <- st_read("data/clean/final_spatial_shp")
 
-st_write(final_spatial, "data/clean/final_spatial.shp", delete_dsn = TRUE)
-
-data <- st_read("data/clean/final_spatial_shp")
-
-names(data)
+# names(data)
 ```
-
-
-
