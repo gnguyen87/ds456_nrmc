@@ -149,8 +149,13 @@ final_spatial <-msp_census_tracts_spatial %>%
 library(rjson)
 
 # Redlining
-redlining <- st_read('data/raw/redlining.json') %>% filter(city == "Minneapolis") 
-# st_write(redlining, 'data/clean/redlining_msp.geojson')
+redlining <- st_read('data/raw/141121-V2')
+
+redlining_msp <- redlining %>%
+  filter(GEOID20 %in% msp_census_tracts) 
+
+# st_write(redlining_msp, 'data/clean/redlining_msp_shp/redlining_msp.shp')
+ 
 
 # Racial Covenants
 racial_cov <- st_read('data/raw/Hennepin_County_Racial_Covenants_Table.csv') %>% 
