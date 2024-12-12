@@ -168,6 +168,15 @@ lm_redline_parks <- lm(total_park_area ~ holc_grade, data = redlining_parks)
 summary(lm_redline_parks)
 ```
 
+
+| Variable        | Estimate  | Std. Error  | t-value | P-value       |
+|-----------------|-----------|-------------|---------|---------------|
+| Intercept       | 960894    | 207396      | 4.633   |  9.79e-06 *** |
+| holc_grade_B    | -189583   | 236679      | -0.801  | 0.42482       |
+| holc_grade_C    | -817086   | 242877      | -3.364  | 0.00105 **    |
+| holc_grade_D    | -736108   | 255695      | -2.879  | 0.00478 **    |
+
+
 Include tables of statistics and calls to action
 
 

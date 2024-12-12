@@ -11,7 +11,7 @@
     "href": "urban_green_spaces.html",
     "title": "Adovocating for Equitable Access to Urban Green Spaces",
     "section": "",
-    "text": "Green space has been shown to improve mental health… xyz we can cite the papers we read earlier in our lit review.\n\n\n\n\n\n\nInclude tables of statistics and calls to action"
+    "text": "Green space has been shown to improve mental health… xyz we can cite the papers we read earlier in our lit review.\n\n\n\n\n\n\n\n\n\nVariable\nEstimate\nStd. Error\nt-value\nP-value\n\n\n\n\nIntercept\n960894\n207396\n4.633\n9.79e-06 ***\n\n\nholc_grade_B\n-189583\n236679\n-0.801\n0.42482\n\n\nholc_grade_C\n-817086\n242877\n-3.364\n0.00105 **\n\n\nholc_grade_D\n-736108\n255695\n-2.879\n0.00478 **\n\n\n\nInclude tables of statistics and calls to action"
   },
   {
     "objectID": "index.html#motivation",
