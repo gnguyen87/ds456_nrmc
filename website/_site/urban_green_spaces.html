@@ -242,7 +242,7 @@ window.Quarto = {
 <p><br>
 </p>
 <p><strong>Add introductory sentence</strong> Below, we use a linear model to analyze the relationship between park space and social vulnerability in Minneapolis census tracts.</p>
-<p><strong>lm(formula = SVI ~ total_park_area)</strong></p>
+<p><strong>lm(formula = SVI ~ park_percentage)</strong></p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -256,37 +256,23 @@ window.Quarto = {
 <tbody>
 <tr class="odd">
 <td>Intercept</td>
-<td>960894</td>
-<td>207396</td>
-<td>4.633</td>
-<td>9.79e-06 ***</td>
+<td>0.674195</td>
+<td>0.046930</td>
+<td>14.366</td>
+<td><0.0000000000000002 ***</td>
 </tr>
 <tr class="even">
-<td>holc_grade_B</td>
-<td>-189583</td>
-<td>236679</td>
-<td>-0.801</td>
-<td>0.42482</td>
-</tr>
-<tr class="odd">
-<td>holc_grade_C</td>
-<td>-817086</td>
-<td>242877</td>
-<td>-3.364</td>
-<td>0.00105 **</td>
-</tr>
-<tr class="even">
-<td>holc_grade_D</td>
-<td>-736108</td>
-<td>255695</td>
-<td>-2.879</td>
-<td>0.00478 **</td>
+<td>park_pct</td>
+<td>-0.009326</td>
+<td>0.003583</td>
+<td>-2.603</td>
+<td>0.0107 *</td>
 </tr>
 </tbody>
 </table>
 <p><br>
 </p>
-<p>This model shows us that for every additional 1% of a census tract area covered by parks, its social vulnerability score (measured on a 0 to 1 percentile scale) drops by an average of 0.0046. That is, if one tract has 10% more green space than another, we can expect it to score 4.6 percentile points better on SVI, indicating <strong>fill this in</strong>.</p>
+<p>This model shows us that for every additional 1% of a census tract area covered by parks, its social vulnerability score (measured on a 0 to 1 percentile scale) drops by an average of 0.009. That is, if one tract has 10% more green space than another, we can expect it to score 9 percentile points better on SVI, indicating <strong>a significant relationship between a community's access to green spaces and its overall wellbeing</strong>.</p>
 
 
 
