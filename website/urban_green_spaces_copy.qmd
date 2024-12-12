@@ -6,8 +6,7 @@ format:
     page-layout: full
 ---
 
-Urban areas in the United States are growing to now accommodate about 83% of the population (1). As cities grow to accommodate the needs of their populations, it becomes increasingly essential to consider how cities are prioritizing green spaces and urban trees. Along with the ecological benefits, urban green spaces have been shown to improve mental health, physical health, and generate a sense of community for the surrounding residents (2). The following map and statistical analysis show that there is a need to make urban green space more accessible for disadvantaged communities.
-\
+Urban areas in the United States are growing to now accommodate about 83% of the population (1). As cities grow to accommodate the needs of their populations, it becomes increasingly essential to consider how cities are prioritizing green spaces and urban trees. Along with the ecological benefits, urban green spaces have been shown to improve mental health, physical health, and generate a sense of community for the surrounding residents (2). The following map and statistical analysis show that there is a need to make urban green space more accessible for disadvantaged communities
 
 ```{r, message=FALSE, echo=FALSE}
 library(httr)
@@ -79,9 +78,8 @@ mpls_tracts <- st_transform(mpls_tracts, 4326) # make the same crs
 mpls_lakes <- st_transform(mpls_lakes, 4326) # make the same crs
 
 parks_in_tracts <- st_intersection(mpls_tracts, geojson_sf_2) # get overlapping area
-  
 parks_in_tracts_2 <- parks_in_tracts %>% 
-  st_difference(st_union(mpls_lakes))
+  st_difference(st_union(mpls_lakes)) 
 
 lakeless_tracts <- mpls_tracts %>% 
   st_difference(st_union(mpls_lakes)) 
@@ -110,7 +108,6 @@ mn_census_tract_2 <- lakeless_tracts %>%
 ```
 
 ```{r, echo = FALSE}
-library(htmltools)
 # Adding Leaflet Map
 palette <- colorNumeric(palette = rev("Greens"), domain=mn_census_tract_2$total_park_area)
 mn_census_tract_3 <- st_collection_extract(mn_census_tract_2, type = "POLYGON") %>%
@@ -126,14 +123,14 @@ park_area_leaf <- leaflet(data = mn_census_tract_3) %>%
     weight = 1,
     opacity = 1,
     fillOpacity = 0.9,
-    label = ~paste("Park Area:", total_park_area, "m\u00B2")
+    label = ~paste("Park Area:", total_park_area, "m^2")
   ) %>%
   
   addLegend(
     "bottomright",
     pal = palette,
     values = ~total_park_area,
-    title = HTML('<span style="color: black;">Total Park Area m\u00B2</span>')
+    title = "Total Park Area (m^2)"
   ) %>%
   
   addControl("Total Park Area by Census Tract in Minneapolis", position = "topright")
@@ -219,40 +216,16 @@ lm_redline_parks <- lm(total_park_area ~ holc_grade, data = redlining_parks)
 summary(lm_redline_parks)
 ```
 
-\
-
-
-As demonstrated above, access to park areas varies across Minneapolis census tracts, with some tracts lacking parks entirely and others having an abundance. In order to test whether or not parks are equally available across census tracts in Minneapolis, we performed a linear regression analyzing the relationship between total park area ($m^2$) and HOLC grade. This data came from [cite HOLC].
-
-**lm(formula = total_park_area ~ holc_grade)**
 
 | Variable        | Estimate  | Std. Error  | t-value | P-value       |
 |-----------------|-----------|-------------|---------|---------------|
-| Intercept       | 960894    | 207396      | 4.633   | 9.79e-06 ***  |
+| Intercept       | 960894    | 207396      | 4.633   |  9.79e-06 *** |
 | holc_grade_B    | -189583   | 236679      | -0.801  | 0.42482       |
 | holc_grade_C    | -817086   | 242877      | -3.364  | 0.00105 **    |
 | holc_grade_D    | -736108   | 255695      | -2.879  | 0.00478 **    |
 
-\
 
-The linear regression model uses the park areas in census tracts of HOLC grade A as a baseline to compare to census tracts of HOLC grades B, C, and D. The results from this model show that there is no significant difference in total park area between census tracts of HOLC grades A and B since the P-value is insignificant. However, the model shows a significant decline in total park area in both census tracts of HOLC grades C and D in comparison to HOLC grade A census tracts. HOLC grade C census tracts are expected to have 817086 $m^2$ less park area than HOLC grade A census tracts, and HOLC grade D census tracts are expected to have 736108 $m^2$ less park area than HOLC grade A census tracts. 
-
-\
-
-**Add introductory sentence** Below, we use a linear model to analyze the relationship between park space and social vulnerability in Minneapolis census tracts. 
-
-**lm(formula = SVI ~ total_park_area)**
-
-| Variable        | Estimate  | Std. Error  | t-value | P-value       |
-|-----------------|-----------|-------------|---------|---------------|
-| Intercept       | 960894    | 207396      | 4.633   | 9.79e-06 ***  |
-| holc_grade_B    | -189583   | 236679      | -0.801  | 0.42482       |
-| holc_grade_C    | -817086   | 242877      | -3.364  | 0.00105 **    |
-| holc_grade_D    | -736108   | 255695      | -2.879  | 0.00478 **    |
-
-\
-
-This model shows us that for every additional 1% of a census tract area covered by parks, its social vulnerability score (measured on a 0 to 1 percentile scale) drops by an average of 0.0046. That is, if one tract has 10% more green space than another, we can expect it to score 4.6 percentile points better on SVI, indicating **fill this in**. 
+Include tables of statistics and calls to action
 
 
 
