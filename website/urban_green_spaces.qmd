@@ -130,7 +130,6 @@ leaflet(data = mn_census_tract_3) %>%
     "bottomright",
     pal = palette,
     values = ~total_park_area,
-    opacity = 0,
     title = "Total Park Area (m\u00B2)"
   ) %>%
   
