@@ -218,8 +218,8 @@ final_spatial <- final_spatial_lst%>%
   )
 # 
 # st_write(final_spatial, "data/clean/final_spatial.shp", delete_dsn = TRUE)
-# 
-# data <- st_read("data/clean/final_spatial_shp")
 
-# names(data)
 ```
+
+
+

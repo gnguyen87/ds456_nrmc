@@ -1,3 +1,9 @@
+---
+format:
+  html:
+    page-layout: article
+---
+
 ![](assets/images/racial_cov.webp){fig-align="center"}
 
 # Racial Covenants
