@@ -69,7 +69,7 @@ server <- function(input, output) {
     HTML(paste(
       "Variables: ",
       "  - Racial Covenants: Properties that prohibited people of color from owning/leasing in 1920s",
-      "  - HOLC Grade: Census tract's Home Owner Loan Corporation neighborhood grades (A = “Best”; B = “Still Desirable”; C = “Declining”; and D = “Hazardous” designations, respectively)",
+      "  - HOLC Grade: Census tract's Home Owner Loan Corporation neighborhood grades (1 = “Best”; 2 = “Still Desirable”; 3 = “Declining”; and 4 = “Hazardous” designations, respectively)",
       "  - Annual PM2.5 emissions: Average aggregated emissions from all air permitted facilities located within each census tract (2016-2020)",
       "  - Tree canopy percentage: Percentage of pixels in a city or neighborhood that are categorized as `tree` (2020)",
       "  - Social Vulnerability: Each variable represents the average percentage of the census tract's population in that category (2016-2020)",
