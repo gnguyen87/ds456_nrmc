@@ -123,10 +123,10 @@ ul.task-list li input[type="checkbox"] {
       <!-- user-provided yaml closeread style options -->
       <style>
         :root {
-          --cr-narrative-font-family: Poppins;
+          --cr-narrative-text-color-sidebar: ;
 --cr-narrative-font-size: 24px;
---cr-narrative-text-color-sidebar: ;
 --cr-section-background-color: ;
+--cr-narrative-font-family: Poppins;
         }
       </style>
     
@@ -190,21 +190,23 @@ ul.task-list li input[type="checkbox"] {
 <p>First, we will look at the uneven distribution of <strong>land surface temperature</strong> in Minneapolis as a result of racial covenants and redlining.</p>
 </div>
 </div>
-<div class="trigger new-trigger" data-scale-by="1.6" data-pan-to="220px, -300px" data-focus-on="cr-map-lst">
+<div class="trigger new-trigger" data-pan-to="220px, -300px" data-focus-on="cr-map-lst" data-scale-by="1.6">
 <div class="narrative">
-<p>In <strong>higher HOLC</strong> grade neighborhoods with <strong>dense</strong> concentrations of racial covenants, today’s land surface temperature is <strong>markedly lower</strong>.</p>
+<p>In <strong>higher HOLC</strong> grade neighborhoods with <strong>dense</strong> concentrations of racial covenants, today’s land surface temperature is <strong>markedly lower</strong>.<img src="assets/images/holc_grade_legend.png" class="img-fluid" width="110"><img src="assets/images/mean_lst_legend.png" class="img-fluid" width="120"></p>
 </div>
 </div>
-<div class="trigger new-trigger" data-scale-by="1.6" data-pan-to="50px, 300px" data-focus-on="cr-map-lst">
+<div class="trigger new-trigger" data-pan-to="50px, 300px" data-focus-on="cr-map-lst" data-scale-by="1.6">
 <div class="narrative">
-<p>Contrastly, land surface temperature is <strong>remarkably higher</strong> in areas that were deemed as <strong>“declining”, “hazardous”, and “undesirable”</strong>–areas where there were little to no racial covenants.</p>
+<p>Contrastly, land surface temperature is <strong>remarkably higher</strong> in areas that were deemed as <strong>“declining”, “hazardous”, and “undesirable”</strong>–areas where there were little to no racial covenants.<img src="assets/images/holc_grade_legend.png" class="img-fluid" width="110"><img src="assets/images/mean_lst_legend.png" class="img-fluid" width="120"></p>
 </div>
 </div>
 </div>
 <div class="sticky-col">
 <div class="sticky-col-stack">
 <div id="cr-map-lst" class="sticky">
-<p><img src="assets/images/racial_cov.png" class="img-fluid quarto-figure quarto-figure-center" style="width:40.0%"><img src="assets/images/mean_lst.png" class="img-fluid quarto-figure quarto-figure-center" style="width:41.2%"></p>
+<div style="display: flex; justify-content: center; gap: 5.5px;">
+<p><img src="assets/images/racial_cov.png" class="img-fluid quarto-figure quarto-figure-center" style="width:40.0%"> <img src="assets/images/mean_lst.png" class="img-fluid quarto-figure quarto-figure-center" style="width:41.2%"></p>
+</div>
 </div>
 </div>
 </div>
@@ -216,21 +218,23 @@ ul.task-list li input[type="checkbox"] {
 <p>Similarly, we can observe these patterns when comparing <strong>levels of air pollution from factories</strong>.</p>
 </div>
 </div>
-<div class="trigger new-trigger" data-scale-by="1.7" data-pan-to="250px, -270px" data-focus-on="cr-map-air">
+<div class="trigger new-trigger" data-pan-to="230px, -280px" data-focus-on="cr-map-air" data-scale-by="1.7">
 <div class="narrative">
-<p>Neighborhoods with a lot of previous racial covenants, ones that were deemed as <strong>desirable</strong> and <strong>worthy of investment</strong>, tend to have <strong>no</strong> factories planted within its vicinity. In other words, they tend to be exposed to <strong>zero</strong> emissions of PM2.5 from nearyby factories.</p>
+<p>Neighborhoods with a lot of previous racial covenants, ones that were deemed as <strong>desirable</strong> and <strong>worthy of investment</strong>, tend to have <strong>no</strong> factories planted within its vicinity. They tend to be exposed to <strong>zero</strong> emissions of PM2.5 from nearby factories.<img src="assets/images/holc_grade_legend.png" class="img-fluid" width="110"><img src="assets/images/air_pollution_legend.png" class="img-fluid" width="140"></p>
 </div>
 </div>
-<div class="trigger new-trigger" data-scale-by="1.6" data-pan-to="300px, 300px" data-focus-on="cr-map-air">
+<div class="trigger new-trigger" data-pan-to="340px, 300px" data-focus-on="cr-map-air" data-scale-by="1.6">
 <div class="narrative">
-<p>On the other hand, in the Near North neighborhood (no racial covenants and C-D HOLC grade), one of Minneapolis’ communities with the <strong>biggest BIPOC population</strong>, are exposed to <strong>severely high</strong> levels of PM2.5 emissions. This is because within their area, there are around 15 air emitting factories–including the Hennepin Energy Recovery Center.</p>
+<p>On the other hand, in the Near North neighborhood (no racial covenants and C-D HOLC grade), one of Minneapolis’ communities with the <strong>biggest BIPOC population</strong>, are exposed to <strong>severely high</strong> levels of PM2.5 emissions. This is because within their area, there are around 15 air emitting factories–including the Hennepin Energy Recovery Center.<img src="assets/images/holc_grade_legend.png" class="img-fluid" width="110"><img src="assets/images/air_pollution_legend.png" class="img-fluid" width="140"></p>
 </div>
 </div>
 </div>
 <div class="sticky-col">
 <div class="sticky-col-stack">
 <div id="cr-map-air" class="sticky">
-<p><img src="assets/images/racial_cov.png" class="img-fluid quarto-figure quarto-figure-center" style="width:40.0%"><img src="assets/images/air_pollution.png" class="img-fluid quarto-figure quarto-figure-center" style="width:41.5%"></p>
+<div style="display: flex; justify-content: center; gap: 5.5px;">
+<p><img src="assets/images/racial_cov.png" class="img-fluid" style="width:40.0%"> <img src="assets/images/air_pollution.png" class="img-fluid" style="width:41.5%"></p>
+</div>
 </div>
 </div>
 </div>

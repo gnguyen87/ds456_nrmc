@@ -5,7 +5,7 @@ account: opbfa1-anh-nguyen
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 13525720
-bundleId: 9464150
+bundleId: 9514421
 url: https://opbfa1-anh-nguyen.shinyapps.io/msp_enviro_no_title/
 version: 1
 asMultiple: FALSE

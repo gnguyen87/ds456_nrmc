@@ -48,24 +48,29 @@ Let's take a closer look at how residential seggregation correlates with the dis
 ::: {.cr-section layout="sidebar-left"}
 [@cr-map-lst] First, we will look at the uneven distribution of **land surface temperature** in Minneapolis as a result of racial covenants and redlining.
 
-[@cr-map-lst]{pan-to="220px, -300px" scale-by="1.6"} In **higher HOLC** grade neighborhoods with **dense** concentrations of racial covenants, today's land surface temperature is **markedly lower**.
+[@cr-map-lst]{pan-to="220px, -300px" scale-by="1.6"} In **higher HOLC** grade neighborhoods with **dense** concentrations of racial covenants, today's land surface temperature is **markedly lower**.![](assets/images/holc_grade_legend.png){width="110"}![](assets/images/mean_lst_legend.png){width="120"}
 
-[@cr-map-lst]{pan-to="50px, 300px" scale-by="1.6"} Contrastly, land surface temperature is **remarkably higher** in areas that were deemed as **"declining", "hazardous", and "undesirable"**--areas where there were little to no racial covenants.
+[@cr-map-lst]{pan-to="50px, 300px" scale-by="1.6"} Contrastly, land surface temperature is **remarkably higher** in areas that were deemed as **"declining", "hazardous", and "undesirable"**--areas where there were little to no racial covenants.![](assets/images/holc_grade_legend.png){width="110"}![](assets/images/mean_lst_legend.png){width="120"}
 
 ::: {#cr-map-lst}
-![](assets/images/racial_cov.png){fig-align="center" width="40%"}![](assets/images/mean_lst.png){fig-align="center" width="41.2%"}
+<div style="display: flex; justify-content: center; gap: 5.5px;">
+![](assets/images/racial_cov.png){fig-align="center" width="40%"}
+![](assets/images/mean_lst.png){fig-align="center" width="41.2%"}
+</div>
 :::
 :::
 
 ::: {.cr-section layout="sidebar-right"}
 [@cr-map-air] Similarly, we can observe these patterns when comparing **levels of air pollution from factories**.
 
-[@cr-map-air]{pan-to="250px, -270px" scale-by="1.7"} Neighborhoods with a lot of previous racial covenants, ones that were deemed as **desirable** and **worthy of investment**, tend to have **no** factories planted within its vicinity. In other words, they tend to be exposed to **zero** emissions of PM2.5 from nearyby factories.
+[@cr-map-air]{pan-to="230px, -280px" scale-by="1.7"} Neighborhoods with a lot of previous racial covenants, ones that were deemed as **desirable** and **worthy of investment**, tend to have **no** factories planted within its vicinity. They tend to be exposed to **zero** emissions of PM2.5 from nearby factories.![](assets/images/holc_grade_legend.png){width="110"}![](assets/images/air_pollution_legend.png){width="140"}
 
-[@cr-map-air]{pan-to="300px, 300px" scale-by="1.6"}  On the other hand, in the Near North neighborhood (no racial covenants and C-D HOLC grade), one of Minneapolis' communities with the **biggest BIPOC population**, are exposed to **severely high** levels of PM2.5 emissions. This is because within their area, there are around 15 air emitting factories--including the Hennepin Energy Recovery Center.
+[@cr-map-air]{pan-to="340px, 300px" scale-by="1.6"} On the other hand, in the Near North neighborhood (no racial covenants and C-D HOLC grade), one of Minneapolis' communities with the **biggest BIPOC population**, are exposed to **severely high** levels of PM2.5 emissions. This is because within their area, there are around 15 air emitting factories--including the Hennepin Energy Recovery Center.![](assets/images/holc_grade_legend.png){width="110"}![](assets/images/air_pollution_legend.png){width="140"}
 
 ::: {#cr-map-air}
-![](assets/images/racial_cov.png){fig-align="center" width="40%"}![](assets/images/air_pollution.png){fig-align="center" width="41.5%"}
+<div style="display: flex; justify-content: center; gap: 5.5px;">
+  ![](assets/images/racial_cov.png){width="40%"}
+  ![](assets/images/air_pollution.png){width="41.5%"}
+</div>
 :::
 :::
-
