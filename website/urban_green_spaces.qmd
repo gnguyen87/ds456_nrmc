@@ -1,9 +1,9 @@
 ---
 title: "Adovocating for Equitable Access to Urban Green Spaces"
 author: "Mikaely Evans"
-format: 
-  html:
-    page-layout: article
+format:
+  closeread-html:
+    theme: custom.css
 ---
 
 Urban areas in the United States are growing to now accommodate about 83% of the population (1). As cities grow to accommodate the needs of their populations, it becomes increasingly essential to consider how cities are prioritizing green spaces and urban trees. Along with the ecological benefits, urban green spaces have been shown to improve mental health, physical health, and generate a sense of community for the surrounding residents (2). The following map and statistical analysis show that there is a need to make urban green space more accessible for disadvantaged communities.

@@ -1,7 +1,7 @@
 ---
 format:
-  html:
-    page-layout: article
+  closeread-html:
+    theme: custom.css
 ---
 
 ![](assets/images/racial_cov.webp){fig-align="center"}
@@ -25,8 +25,13 @@ The legacy of residential segregation has led to stark environmental injustice t
 -   **2x the cancer risk**
     -   Black Minnesotans have 2.25 times the cancer risk as the average Minnesotan
 
+\
+\
+
 # Our site visits (probably should have a more interesting title)
 
+\
+\
 # Our interests
 
 ## Motivation
