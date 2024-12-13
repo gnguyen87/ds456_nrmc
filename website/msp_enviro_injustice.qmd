@@ -3,6 +3,7 @@ title: "Examining The Roots of Environmental Injustice in Minneapolis"
 author: "Na Nguyen and Charles Batkaishan"
 format:
   closeread-html:
+    page-layout: article
     theme: custom.css
     cr-style:
       narrative-font-size: "24px"
