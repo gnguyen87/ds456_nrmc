@@ -1,12 +1,5 @@
 [
   {
-    "objectID": "msp_enviro_injustice.html",
-    "href": "msp_enviro_injustice.html",
-    "title": "Examining The Roots of Environmental Injustice in Minneapolis",
-    "section": "",
-    "text": "This interactive dashboard shows the legacy of residential segregation, one that has led to stark environmental injustice that tremendously ails Black, Latino, and Native American families in Minneapolis.\nThe correlation between climate change effects and marginalized neighborhoods are apparent: the more socially vulnerable a neighborhood is, the more exposed they are to the effects of climate change—and we can trace this back to residential seggregation practices from the early 20th century. [add svi ~ holc model info + interpretation here?]\n\n\n\n\n\nRacial Covenants and Land Surface Temperature\n\n\n\nThe map shown on the right are racial covenants and mean land surface temperature map per census tract. As you can see that are with higher mean LST are in places with lower HOLC Grade and little to no racial covenants areas. Similarly, areas with higher HOLC Grade and with many racial covenants areas experience lower mean LST.\n\n\n\n\n\n\n\n\nRacial Covenants and Social Vulnerability\n\n\n\nNow the map shown on the right are racial covenants compared with air pollution map. Similarly to LST, you can see areas with higher annual PM2.5 are areas with low HOLC Grade, such as C and D, and places with little to no racial covenants\n\n\n\n\n\n\n\n\nRacial Covenants and Air Pollution\n\n\n\nNow the map shown on the right are racial covenants compared with social vulnerability map. You can see that places with higher social vulnerability index score are places with low HOLC Grade and places with little to no racial covenant areas.\n\n\n\n\n\n\n\n\n\nAs you can see, environmental injustices are deeply tied to historical segregation practices. To further study these patterns, we analyzed key numerical results:\n\n\n\n\nLand Surface Temperature (LST):\n\n\n\n\n\nOn average, census tracts with higher social vulnerability had mean land surface temperatures that were 2.22°F higher than less vulnerable areas, even when controlling for tree canopy coverage.\nThe median of mean land surface temperature for socially vulnerable group is 95.78, and The median of mean land surface temperature for socially not vulnerable group is 93.78.\n\n\n\n\n\n\n\n\n\n\n\nAnnual Air Pollution:\n\nOn average, census tracts with higher social vulnerability had annual air pollution 0.97 tons than less vulnerable areas, even when controlling for tree canopy coverage.\nThe median of annual air pollution for socially vulnerable group is 1.597467 tons, and The median of mean land surface temperature for socially not vulnerable group is 1.013138 tons."
-  },
-  {
     "objectID": "index.html#motivation",
     "href": "index.html#motivation",
     "title": "Racial Covenants",
@@ -21,87 +14,10 @@
     "text": "Research question\nLooking at historically racially covenanted neighborhoods in Minneapolis and present day environmental data, can we still see patterns in the impact of residential seggregation on the disparity of climate change effects? In other words, how much does the introduction of racial covenants in the 1910s impact the environmental inequality in Minneapolis that we see today? How can we, then, inform environmental practices with data?"
   },
   {
-    "objectID": "msp_enviro_injustice.html#matching-analysis",
-    "href": "msp_enviro_injustice.html#matching-analysis",
+    "objectID": "msp_enviro_injustice.html",
+    "href": "msp_enviro_injustice.html",
     "title": "Examining The Roots of Environmental Injustice in Minneapolis",
-    "section": "Matching Analysis",
-    "text": "Matching Analysis\nWe applied 5 We applied five matching methods to control for confounders and estimate the average treatment effect on the treated (ATT):\n\nNearest Neighbors (k=2)\nFull Matching\nExact Matching\nCoarsened Exact Matching\nSubclass Matching\n\nAmong these, Exact Matching was chosen due to its superior balance (SMD = 0). However, this method resulted in a smaller matched sample size. Of the original 116 census tracts, only 97 observations were retained after matching, with 19 untreated tracts."
-  },
-  {
-    "objectID": "msp_enviro_injustice.html#regression-analysis",
-    "href": "msp_enviro_injustice.html#regression-analysis",
-    "title": "Examining The Roots of Environmental Injustice in Minneapolis",
-    "section": "Regression Analysis",
-    "text": "Regression Analysis\nWe performed a regression analysis on the matched dataset to examine the relationship between land surface temperature (LST), social vulnerability (SVI), and tree canopy coverage. The regression model was as follows:\nmod_lst &lt;- lm(mean_lst ~ svi_index * tree_canopy_area, data = match_out_exact_data, weights = weights)\nResults:\n\nThe average LST was 2.22°F higher in socially vulnerable neighborhoods, holding tree canopy coverage constant.\nThe interaction term between SVI and tree canopy area was statistically significant ((p = 0.007)), suggesting that the moderating effect of tree canopy on LST varies by social vulnerability.\n\n\nRegression Output:\n\n\n\nCoefficient\nEstimate\nStd. Error\nt-value\nP-value\n\n\n\n\nIntercept\n97.97\n0.68\n144.67\n&lt; 2e-16\n\n\nSocial Vulnerability\n2.22\n0.76\n2.93\n0.004\n\n\nTree Canopy Area\n-0.10\n0.02\n-5.33\n7.62e-07\n\n\nSVI × Tree Canopy Area\n-0.06\n0.02\n-2.76\n0.007"
-  },
-  {
-    "objectID": "msp_enviro_injustice.html#visualizing-the-patterns",
-    "href": "msp_enviro_injustice.html#visualizing-the-patterns",
-    "title": "Examining The Roots of Environmental Injustice in Minneapolis",
-    "section": "Visualizing the Patterns",
-    "text": "Visualizing the Patterns\n\nComparing Environemntal Variables with Historical Practices\n\n\n Racial Covenants\n\n\n Mean Land Surface Temperatures\n\n\n\n\n Tree Canopy\n\n\n Air Pollution"
-  },
-  {
-    "objectID": "msp_enviro_injustice.html#key-observations",
-    "href": "msp_enviro_injustice.html#key-observations",
-    "title": "Examining The Roots of Environmental Injustice in Minneapolis",
-    "section": "Key Observations",
-    "text": "Key Observations\n\nAreas with higher mean land surface temperatures (LST) and higher air pollution overlap with neighborhoods of lower HOLC grades.\nThese areas also tend to have less tree canopy coverage and little to no racial covenants."
-  },
-  {
-    "objectID": "msp_enviro_injustice.html#what-the-numbers-reveal",
-    "href": "msp_enviro_injustice.html#what-the-numbers-reveal",
-    "title": "Examining The Roots of Environmental Injustice in Minneapolis",
-    "section": "What the Numbers Reveal",
-    "text": "What the Numbers Reveal\nWe analyzed the relationship between land surface temperatures, social vulnerability, and tree canopy coverage:\n\nSocially vulnerable neighborhoods experience an average increase of 2.22°F in mean land surface temperature compared to less vulnerable areas.\nTree canopy significantly reduces surface temperatures, but its benefits are not equitably distributed."
-  },
-  {
-    "objectID": "msp_enviro_injustice.html#why-this-matters",
-    "href": "msp_enviro_injustice.html#why-this-matters",
-    "title": "Examining The Roots of Environmental Injustice in Minneapolis",
-    "section": "Why This Matters",
-    "text": "Why This Matters\nHistorical practices of residential segregation have left a lasting impact on environmental conditions. Marginalized communities are disproportionately exposed to higher temperatures, poorer air quality, and less green spaces."
-  },
-  {
-    "objectID": "msp_enviro_injustice.html#side-by-side-map-comparison",
-    "href": "msp_enviro_injustice.html#side-by-side-map-comparison",
-    "title": "Examining The Roots of Environmental Injustice in Minneapolis",
-    "section": "Side-by-Side Map Comparison",
-    "text": "Side-by-Side Map Comparison\n\nComparing Environemntal Variables with Historical Practices\n\n\n Racial Covenants\n\n\n Mean Land Surface Temperatures\n\n\n\n\n Tree Canopy\n\n\n Air Pollution"
-  },
-  {
-    "objectID": "msp_enviro_injustice.html#observations-and-patterns",
-    "href": "msp_enviro_injustice.html#observations-and-patterns",
-    "title": "Examining The Roots of Environmental Injustice in Minneapolis",
-    "section": "Observations and Patterns",
-    "text": "Observations and Patterns\nBy examining the maps, we notice key patterns:\n\n\nNeighborhoods with lower HOLC grades are associated with hotter mean land surface temperatures.\n\n\nAreas with high air pollution levels and low tree canopy coverage are often socially vulnerable neighborhoods.\n\n\nThese insights highlight the intersection of historical practices and present-day environmental disparities."
-  },
-  {
-    "objectID": "msp_enviro_injustice.html#statistical-insights",
-    "href": "msp_enviro_injustice.html#statistical-insights",
-    "title": "Examining The Roots of Environmental Injustice in Minneapolis",
-    "section": "Statistical Insights",
-    "text": "Statistical Insights\nTo quantify these relationships, we used regression analysis. The results revealed:\n\nSocial vulnerability is associated with a 2.22°F increase in mean land surface temperature, holding tree canopy constant.\nTree canopy coverage significantly moderates land surface temperature, with more tree coverage leading to cooler temperatures.\n\n\n\n\nCoefficient\nEstimate\nStd. Error\nt-value\nP-value\n\n\n\n\nIntercept\n97.97\n0.68\n144.67\n&lt; 2e-16\n\n\nSocial Vulnerability\n2.22\n0.76\n2.93\n0.004\n\n\nTree Canopy Area\n-0.10\n0.02\n-5.33\n7.62e-07\n\n\nSVI × Tree Canopy Area\n-0.06\n0.02\n-2.76\n0.007"
-  },
-  {
-    "objectID": "msp_enviro_injustice.html#side-by-side-comparison",
-    "href": "msp_enviro_injustice.html#side-by-side-comparison",
-    "title": "Examining The Roots of Environmental Injustice in Minneapolis",
-    "section": "Side-by-Side Comparison",
-    "text": "Side-by-Side Comparison\n\n\n Racial Covenants\n\n\n Mean Land Surface Temperatures\n\n\n\n\n Tree Canopy\n\n\n Air Pollution\n\n\n\n\n\n\n\n\nKey Observations:\n\n\n\n\nAreas with high mean land surface temperatures are strongly correlated with low tree canopy coverage and high air pollution levels.\nThese regions overlap with areas having lower HOLC grades and little to no racial covenants, highlighting systemic disparities."
-  },
-  {
-    "objectID": "msp_enviro_injustice.html#regression-insights",
-    "href": "msp_enviro_injustice.html#regression-insights",
-    "title": "Examining The Roots of Environmental Injustice in Minneapolis",
-    "section": "Regression Insights",
-    "text": "Regression Insights\nTo understand these patterns quantitatively, we used regression analysis to explore the relationship between social vulnerability, tree canopy coverage, and mean land surface temperatures.\n\nFindings:\n\nSocially vulnerable neighborhoods experience a 2.22°F increase in mean land surface temperature compared to less vulnerable areas, holding tree canopy constant.\nTree canopy significantly mitigates land surface temperatures, with higher coverage reducing the impact of social vulnerability.\n\n\n\n\n\n\n\nNote\n\n\n\nThis underscores how historical practices of residential segregation continue to shape environmental conditions, exacerbating disparities in vulnerable communities."
-  },
-  {
-    "objectID": "msp_enviro_injustice.html#exploring-key-maps",
-    "href": "msp_enviro_injustice.html#exploring-key-maps",
-    "title": "Examining The Roots of Environmental Injustice in Minneapolis",
-    "section": "Exploring Key Maps",
-    "text": "Exploring Key Maps\n\n\n\n\n\n\n Racial Covenants\n\n\n Mean Land Surface Temperatures\n\n\n\n\n\n\n\n\n\n\n\nHistorical practices such as racial covenants and redlining have left lasting imprints on Minneapolis’s environmental landscape. Comparing these maps:\n\n\n\n\n\nNeighborhoods with high mean LST overlap significantly with areas that had lower HOLC grades.\nThese neighborhoods tend to lack significant tree canopy and experience elevated air pollution.\nAreas with little to no racial covenants often bear the brunt of environmental inequities.\n\n\n\n\n\nFocus on Racial Covenants and HOLC Grades\n\n\n\n\nFocus on Mean Land Surface Temperatures\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCorrelation Insights"
+    "section": "",
+    "text": "This interactive dashboard allows you to explore the legacy of residential segregation, one that has led to stark environmental injustice that tremendously ails Black, Latino, and Native American families in Minneapolis.\nThe correlation between climate change effects and marginalized neighborhoods are apparent: the more socially vulnerable a neighborhood is, the more exposed they are to the effects of climate change—and we can trace this back to residential seggregation practices from the early 20th century.\n\n\n\n\n\n\n\n\n\nSocial Vulnerability vs. Climate Change\nFrom our findings, it was clear that socially vulnerable neighborhoods (high poverty levels and minority population) are more exposed to air pollution and higher temperatures.\nWe observed that census tracts with higher social vulnerability are exposed to 0.96 tons of PM2.5 more than less vulnerable areas, even when controlling for tree canopy, HOLC grade and racial covenants. In the same vein, our model revealed that census tracts with higher social vulnerability had a mean land surface temperature that were 2.22°F higher than less vulnerable areas, even when controlling for tree canopy, HOLC grade and racial covenants.\n\n \n\n\n\n\n\n\n\n\n\nA Closer Look\nLet’s take a closer look at how residential seggregation correlates with the disparity in air pollution, and temperature in different Minneapolis neighborhoods.\n\n\n\n\nFirst, we will look at the uneven distribution of land surface temperature in Minneapolis as a result of racial covenants and redlining.\n\n\n\n\nIn higher HOLC grade neighborhoods with dense concentrations of racial covenants, today’s land surface temperature is markedly lower.\n\n\n\n\nContrastly, land surface temperature is remarkably higher in areas that were deemed as “declining”, “hazardous”, and “undesirable”–areas where there were little to no racial covenants.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSimilarly, we can observe these patterns when comparing levels of air pollution from factories.\n\n\n\n\nNeighborhoods with a lot of previous racial covenants, ones that were deemed as desirable and worthy of investment, tend to have no factories planted within its vacinity. In other words, they tend to be exposed to zero emissions of PM2.5 from nearyby factories.\n\n\n\n\nOn the other hand, in the Near North neighborhood (no racial covenants and C-D HOLC grade), one of Minneapolis’ communities with the biggest BIPOC population, are exposed to severely high levels of PM2.5 emissions. This is because within their area, there are around 15 air emitting factories–including the Hennepin Energy Recovery Center."
   }
 ]

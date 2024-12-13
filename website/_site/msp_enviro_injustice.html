@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.4.555">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Na Nguyen">
+<meta name="author" content="Na Nguyen and Charles Batkaishan">
 
-<title>Examining The Roots of Environmental Injustice in Minneapolis – Homepage</title>
+<title>Homepage - Examining The Roots of Environmental Injustice in Minneapolis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -89,7 +89,7 @@ ul.task-list li input[type="checkbox"] {
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -100,7 +100,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./msp_enviro_injustice.html" aria-current="page"> 
-<span class="menu-text">Historical Environmental Injustice</span></a>
+<span class="menu-text">Minneapolis’ Current Environmental Status</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./urban_green_spaces.html"> 
@@ -108,7 +108,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
+          <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -123,7 +123,10 @@ ul.task-list li input[type="checkbox"] {
       <!-- user-provided yaml closeread style options -->
       <style>
         :root {
-          --cr-narrative-font-size: 24px;
+          --cr-narrative-font-family: Poppins;
+--cr-narrative-text-color-sidebar: ;
+--cr-section-background-color: ;
+--cr-narrative-font-size: 24px;
         }
       </style>
     
@@ -140,7 +143,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Na Nguyen </p>
+             <p>Na Nguyen and Charles Batkaishan </p>
           </div>
   </div>
     
@@ -153,102 +156,191 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This interactive dashboard shows the legacy of residential segregation, one that has led to stark environmental injustice that tremendously ails Black, Latino, and Native American families in Minneapolis.</p>
-<p>The correlation between climate change effects and marginalized neighborhoods are <strong>apparent</strong>: <em>the more socially vulnerable a neighborhood is, the more exposed they are to the effects of climate change—and we can trace this back to residential seggregation practices from the early 20th century.</em> [add svi ~ holc model info + interpretation here?]</p>
-<iframe src="https://opbfa1-anh-nguyen.shinyapps.io/msp_enviro_no_title/" style="width: 90%; height: 920px;display: block; margin-left: auto; margin-right: auto; ">
+<p>This interactive dashboard allows you to explore the legacy of residential segregation, one that has led to stark environmental injustice that tremendously ails Black, Latino, and Native American families in Minneapolis.</p>
+<p>The correlation between climate change effects and marginalized neighborhoods are <strong>apparent</strong>: <em>the more socially vulnerable a neighborhood is, the more exposed they are to the effects of climate change—and we can trace this back to residential seggregation practices from the early 20th century.</em></p>
+<iframe src="https://opbfa1-anh-nguyen.shinyapps.io/msp_enviro_no_title/" style="width: 100%; height:920px;display: block; margin: 0 auto; ">
 </iframe>
+<p><br>
+</p>
+<p><br>
+</p>
+<p><br>
+</p>
+<section id="social-vulnerability-vs.-climate-change" class="level1">
+<h1>Social Vulnerability vs.&nbsp;Climate Change</h1>
+<p>From our findings, it was clear that socially vulnerable neighborhoods (high poverty levels and minority population) are more exposed to air pollution and higher temperatures.</p>
+<p>We observed that census tracts with higher social vulnerability are exposed to <strong>0.96 tons</strong> of PM2.5 more than less vulnerable areas, even when controlling for tree canopy, HOLC grade and racial covenants. In the same vein, our model revealed that census tracts with higher social vulnerability had a mean land surface temperature that were <strong>2.22°F higher</strong> than less vulnerable areas, even when controlling for tree canopy, HOLC grade and racial covenants.</p>
+<div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
+<p><img src="assets/images/air_pollution_boxplot.png" alt="Air Pollution Boxplot" width="562"> <img src="assets/images/lst_boxplot.png" alt="LST Boxplot" width="560"></p>
+</div>
+<p><br>
+</p>
+<p><br>
+</p>
+<p><br>
+</p>
+</section>
+<section id="a-closer-look" class="level1">
+<h1>A Closer Look</h1>
+<p>Let’s take a closer look at how residential seggregation correlates with the disparity in air pollution, and temperature in different Minneapolis neighborhoods.</p>
 <div class="cr-section cr-column-screen sidebar-left">
 <div class="narrative-col">
-<section id="racial-covenants-and-land-surface-temperature" class="level3 narrative trigger">
-<h3 class="narrative anchored" data-anchor-id="racial-covenants-and-land-surface-temperature">Racial Covenants and Land Surface Temperature</h3>
-</section>
 <div class="trigger new-trigger" data-focus-on="cr-map-lst">
 <div class="narrative">
-<p>The map shown on the right are racial covenants and mean land surface temperature map per census tract. As you can see that are with higher mean LST are in places with lower HOLC Grade and little to no racial covenants areas. Similarly, areas with higher HOLC Grade and with many racial covenants areas experience lower mean LST.</p>
+<p>First, we will look at the uneven distribution of <strong>land surface temperature</strong> in Minneapolis as a result of racial covenants and redlining.</p>
 </div>
 </div>
-<div class="trigger">
+<div class="trigger new-trigger" data-pan-to="250px, -300px" data-scale-by="1.6" data-focus-on="cr-map-lst">
 <div class="narrative">
-<hr>
+<p>In <strong>higher HOLC</strong> grade neighborhoods with <strong>dense</strong> concentrations of racial covenants, today’s land surface temperature is <strong>markedly lower</strong>.</p>
 </div>
 </div>
-<section id="racial-covenants-and-social-vulnerability" class="level3 narrative trigger">
-<h3 class="narrative anchored" data-anchor-id="racial-covenants-and-social-vulnerability">Racial Covenants and Social Vulnerability</h3>
-</section>
-<div class="trigger new-trigger" data-focus-on="cr-map-pollution">
+<div class="trigger new-trigger" data-pan-to="50px, 300px" data-scale-by="1.6" data-focus-on="cr-map-lst">
 <div class="narrative">
-<p>Now the map shown on the right are racial covenants compared with air pollution map. Similarly to LST, you can see areas with higher annual PM2.5 are areas with low HOLC Grade, such as C and D, and places with little to no racial covenants</p>
-</div>
-</div>
-<div class="trigger">
-<div class="narrative">
-<hr>
-</div>
-</div>
-<section id="racial-covenants-and-air-pollution" class="level3 narrative trigger">
-<h3 class="narrative anchored" data-anchor-id="racial-covenants-and-air-pollution">Racial Covenants and Air Pollution</h3>
-</section>
-<div class="trigger new-trigger" data-focus-on="cr-map-svi">
-<div class="narrative">
-<p>Now the map shown on the right are racial covenants compared with social vulnerability map. You can see that places with higher social vulnerability index score are places with low HOLC Grade and places with little to no racial covenant areas.</p>
-</div>
-</div>
-<div class="trigger">
-<div class="narrative">
-<hr>
-</div>
-</div>
-<div class="trigger">
-<div class="narrative">
-<p>As you can see, environmental injustices are deeply tied to historical segregation practices. To further study these patterns, we analyzed key numerical results:</p>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-lst-boxplot">
-<div class="narrative">
-<p><strong>Land Surface Temperature (LST)</strong>:</p>
-</div>
-</div>
-<div class="trigger">
-<div class="narrative">
-<ul>
-<li>On average, census tracts with higher social vulnerability had mean land surface temperatures that were <strong>2.22°F higher</strong> than less vulnerable areas, even when controlling for tree canopy coverage.</li>
-<li>The median of mean land surface temperature for socially vulnerable group is <strong>95.78</strong>, and The median of mean land surface temperature for socially not vulnerable group is <strong>93.78</strong>.</li>
-</ul>
-</div>
-</div>
-<div class="trigger new-trigger" data-focus-on="cr-air_pollution-boxplot">
-<div class="narrative">
-
-</div>
-</div>
-<div class="trigger">
-<div class="narrative">
-<ul>
-<li><p><strong>Annual Air Pollution</strong>:</p>
-<ul>
-<li>On average, census tracts with higher social vulnerability had annual air pollution <strong>0.97 tons</strong> than less vulnerable areas, even when controlling for tree canopy coverage.</li>
-<li>The median of annual air pollution for socially vulnerable group is <strong>1.597467 tons</strong>, and The median of mean land surface temperature for socially not vulnerable group is <strong>1.013138 tons</strong>.</li>
-</ul></li>
-</ul>
+<p>Contrastly, land surface temperature is <strong>remarkably higher</strong> in areas that were deemed as <strong>“declining”, “hazardous”, and “undesirable”</strong>–areas where there were little to no racial covenants.</p>
 </div>
 </div>
 </div>
 <div class="sticky-col">
 <div class="sticky-col-stack">
 <div id="cr-map-lst" class="sticky">
-<p><img src="assets/images/racial_cov.png" class="img-fluid"> <img src="assets/images/mean_lst.png" class="img-fluid"></p>
+<p><img src="assets/images/racial_cov.png" class="img-fluid quarto-figure quarto-figure-center" style="width:40.0%"><img src="assets/images/mean_lst.png" class="img-fluid quarto-figure quarto-figure-center" style="width:41.2%"></p>
 </div>
-<div id="cr-map-pollution" class="sticky">
-<p><img src="assets/images/racial_cov.png" class="img-fluid"> <img src="assets/images/svi.png" class="img-fluid"></p>
 </div>
-<div id="cr-map-svi" class="sticky">
-<p><img src="assets/images/racial_cov.png" class="img-fluid"> <img src="assets/images/air_pollution.png" class="img-fluid"></p>
 </div>
-<div id="cr-lst-boxplot" class="sticky">
-<p><img src="assets/images/lst_boxplot.png" class="img-fluid"></p>
 </div>
-<div id="cr-air_pollution-boxplot" class="sticky">
-<p><img src="assets/images/air_pollution_boxplot.png" class="img-fluid"></p>
+<div class="cr-section cr-column-screen sidebar-right">
+<div class="narrative-col">
+<div class="trigger new-trigger" data-focus-on="cr-map-air">
+<div class="narrative">
+<p>Similarly, we can observe these patterns when comparing <strong>levels of air pollution from factories</strong>.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-pan-to="250px, -200px" data-scale-by="1.7" data-focus-on="cr-map-air">
+<div class="narrative">
+<p>Neighborhoods with a lot of previous racial covenants, ones that were deemed as <strong>desirable</strong> and <strong>worthy of investment</strong>, tend to have <strong>no</strong> factories planted within its vacinity. In other words, they tend to be exposed to <strong>zero</strong> emissions of PM2.5 from nearyby factories.</p>
+</div>
+</div>
+<div class="trigger new-trigger" data-pan-to="300px, 300px" data-scale-by="1.6" data-focus-on="cr-map-air">
+<div class="narrative">
+<p>On the other hand, in the Near North neighborhood (no racial covenants and C-D HOLC grade), one of Minneapolis’ communities with the <strong>biggest BIPOC population</strong>, are exposed to <strong>severely high</strong> levels of PM2.5 emissions. This is because within their area, there are around 15 air emitting factories–including the Hennepin Energy Recovery Center.</p>
+</div>
+</div>
+<div class="trigger">
+<div class="narrative">
+<!-- ::: {#cr-map-svi} -->
+</div>
+</div>
+<div class="trigger">
+<div class="narrative">
+<!-- ![](assets/images/racial_cov.png) ![](assets/images/svi.png) -->
+</div>
+</div>
+<div class="trigger">
+<div class="narrative">
+<!-- ::: -->
+</div>
+</div>
+<div class="trigger">
+<div class="narrative">
+<!-- @cr-map-pollution Now the map shown on the right are racial covenants compared with air pollution map. Similarly to LST, you can see areas with higher annual PM2.5 are areas with low HOLC Grade, such as C and D, and places with little to no racial covenants -->
+</div>
+</div>
+<div class="trigger">
+<div class="narrative">
+<!-- ::: {#cr-map-pollution} -->
+</div>
+</div>
+<div class="trigger">
+<div class="narrative">
+<!-- ![](assets/images/racial_cov.png) ![](assets/images/air_pollution.png) -->
+</div>
+</div>
+<div class="trigger">
+<div class="narrative">
+<!-- ::: -->
+</div>
+</div>
+<div class="trigger">
+<div class="narrative">
+<!-- @cr-map-svi Now the map shown on the right are racial covenants compared with social vulnerability map. You can see that places with higher social vulnerability index score are places with low HOLC Grade and places with little to no racial covenant areas. -->
+</div>
+</div>
+<div class="trigger">
+<div class="narrative">
+<!-- As you can see, environmental injustices are deeply tied to historical segregation practices. To further study these patterns, we analyzed key numerical results: -->
+</div>
+</div>
+<div class="trigger">
+<div class="narrative">
+<!-- ::: {#cr-lst-boxplot} -->
+</div>
+</div>
+<div class="trigger">
+<div class="narrative">
+<!-- ![](assets/images/lst_boxplot.png) -->
+</div>
+</div>
+<div class="trigger">
+<div class="narrative">
+<!-- ::: -->
+</div>
+</div>
+<div class="trigger">
+<div class="narrative">
+<!-- @cr-lst-boxplot - **Land Surface Temperature (LST)**: -->
+</div>
+</div>
+<div class="trigger">
+<div class="narrative">
+<!-- -   On average, census tracts with higher social vulnerability had mean land surface temperatures that were **2.22°F higher** than less vulnerable areas, even when controlling for tree canopy coverage. -->
+</div>
+</div>
+<div class="trigger">
+<div class="narrative">
+<!-- -   The median of mean land surface temperature for socially vulnerable group is **95.78**, and The median of mean land surface temperature for socially not vulnerable group is **93.78**. -->
+</div>
+</div>
+<div class="trigger">
+<div class="narrative">
+<!-- ::: {#cr-air_pollution-boxplot} -->
+</div>
+</div>
+<div class="trigger">
+<div class="narrative">
+<!-- ![](assets/images/air_pollution_boxplot.png) -->
+</div>
+</div>
+<div class="trigger">
+<div class="narrative">
+<!-- ::: -->
+</div>
+</div>
+<div class="trigger">
+<div class="narrative">
+<!-- @cr-air_pollution-boxplot -->
+</div>
+</div>
+<div class="trigger">
+<div class="narrative">
+<!-- -   **Annual Air Pollution**: -->
+</div>
+</div>
+<div class="trigger">
+<div class="narrative">
+<!--     -   On average, census tracts with higher social vulnerability had annual air pollution **0.97 tons** than less vulnerable areas, even when controlling for tree canopy coverage. -->
+</div>
+</div>
+<div class="trigger">
+<div class="narrative">
+<!--     -   The median of annual air pollution for socially vulnerable group is **1.597467 tons**, and The median of mean land surface temperature for socially not vulnerable group is **1.013138 tons**. -->
+</div>
+</div>
+</div>
+<div class="sticky-col">
+<div class="sticky-col-stack">
+<div id="cr-map-air" class="sticky">
+<p><img src="assets/images/racial_cov.png" class="img-fluid quarto-figure quarto-figure-center" style="width:40.0%"><img src="assets/images/air_pollution.png" class="img-fluid quarto-figure quarto-figure-center" style="width:41.5%"></p>
 </div>
 </div>
 </div>
@@ -289,6 +381,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- ::: -->
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -326,7 +419,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -358,29 +462,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -388,7 +470,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
