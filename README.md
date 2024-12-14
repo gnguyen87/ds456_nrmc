@@ -1,10 +1,13 @@
-#  Examining the Roots of Environmental Injustice in Minneapolis: An Advocacy for Equitable Access to Urban Green Spaces
+# Examining the Roots of Environmental Injustice in Minneapolis: An Advocacy for Equitable Access to Urban Green Spaces
 
-This is a senior capstone project by Macalester students.
+This repository contains the work for a senior capstone project by Macalester students. The project investigates the historical and systemic roots of environmental injustice in Minneapolis, with a focus on advocating for equitable access to urban green spaces.
 
-Here is the link to our published website: https://gnguyen87.github.io/ds456_nrmc_website/
+## Website
+Explore our findings and insights on our published website: [ds456_nrmc_website](https://gnguyen87.github.io/ds456_nrmc_website/)
 
-Main author: Na Nguyen and Mikaely Evans.
-Other contributors: Charles Batkaishan and Ronan Mannings.
+## Authors
+- **Main Authors**: Na Nguyen and Mikaely Evans  
+- **Other Contributors**: Charles Batkaishan and Ronan Mannings  
 
-Much thanks to Michael Krisch for his invaluable guidance and input throughout our project!
+## Acknowledgments
+We extend our gratitude to Michael Krisch for his invaluable guidance and input throughout this project.
